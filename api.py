@@ -47,19 +47,9 @@ def analyze_problem(request: ProblemRequest):
 
     if not request.problem.strip():
         return {
-            "success": False,
             "error": "Problem statement cannot be empty."
         }
 
-    print("\n========================================")
-    print("NEW ANALYSIS REQUEST")
-    print("========================================")
-    print(request.problem)
-
     result = run_all_agents(request.problem)
 
-    return {
-        "success": True,
-        "problem": request.problem,
-        "result": result
-    }
+    return result

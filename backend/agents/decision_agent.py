@@ -46,13 +46,24 @@ IMPORTANT RULES:
    by the domain agents.
 7. If critical information is missing, do not pretend that
    the project is definitely feasible or infeasible.
-8. The final decision may be:
+8. Before identifying anything as missing, cross-check ALL THREE
+   domain-agent analyses. If the information is explicitly present
+   in any agent analysis, it must NOT be listed as missing.
+9. A missing detailed breakdown is NOT the same as missing information
+   when a relevant total or aggregate value is already provided.
+10. Only classify information as "critical_missing_information" when:
+    - it is absent from all three domain-agent analyses, AND
+    - its absence materially affects the feasibility decision.
+11. Do not list information merely because having more detail would be
+   useful. Useful validation items belong in the recommendation unless
+   they are genuinely critical and currently unavailable.
+12. The final decision may be:
    - Feasible
    - Conditionally Feasible
    - Not Feasible
    - Insufficient Information
-9. Return ONLY valid JSON.
-10. Do not use Markdown.
+13. Return ONLY valid JSON.
+14. Do not use Markdown.
 """
 
 
@@ -135,9 +146,22 @@ IMPORTANT:
 - Do not invent information.
 - Do not recalculate financial metrics.
 - Consider Finance, Technical and Market findings equally.
+- Cross-check all three analyses before declaring any information missing.
+- Do not mark a component as missing when its total/aggregate value is
+  already explicitly available in another agent's analysis.
+- An explicitly provided aggregate annual operating expense is sufficient
+  evidence that operating expenses are known. Do not classify maintenance,
+  electricity, cloud, connectivity, support, or similar sub-components as
+  missing merely because they are not separately itemized.
+- If one agent explicitly says an aggregate operating expense covers named
+  components, treat those components as known rather than missing.
+- Only request a component-level breakdown if an agent explicitly indicates
+  that the aggregate figure is incomplete, unreliable, or materially
+  insufficient for the feasibility decision.
+- Distinguish "critical missing information" from "information that would
+  be useful to validate." Only the former belongs in the missing-information list.
 - If critical information is missing, reflect that in the decision.
-- The final recommendation must be supported by the three
-  agent analyses.
+- The final recommendation must be supported by the three agent analyses.
 """
 
     result = _call_gemini_json(decision_prompt)
