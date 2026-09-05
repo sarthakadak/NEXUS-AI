@@ -161,7 +161,7 @@ STRICT RULES:
         "market",
         MARKET_SYSTEM_PROMPT,
         prompt,
-        max_tokens=2200
+        max_tokens=900
     )
 
 
