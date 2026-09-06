@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS // Agent OS</title>
+<style>html,body{margin:0;height:100%;background:#06090d;}</style>
+<script>
+  (function () {
+    var authed = sessionStorage.getItem('nexus_auth') || localStorage.getItem('nexus_auth');
+    window.location.replace(authed ? 'dashboard.html' : 'login.html');
+  })();
+</script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,1706 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-primary": "#00687a",
+            "on-primary-fixed-variant": "#004e5c",
+            "on-tertiary-fixed": "#002113",
+            "on-error-container": "#ffdad6",
+            "on-secondary-container": "#d6a9ff",
+            "inverse-surface": "#e0e3e8",
+            "on-primary-container": "#00424f",
+            "secondary-fixed-dim": "#ddb7ff",
+            "inverse-on-surface": "#2d3135",
+            "surface-dim": "#101418",
+            "error": "#ffb4ab",
+            "surface-variant": "#31353a",
+            "on-primary-fixed": "#001f26",
+            "surface-bright": "#353a3e",
+            "primary-fixed": "#acedff",
+            "on-tertiary-fixed-variant": "#005236",
+            "background": "#0a0f13",
+            "on-secondary-fixed-variant": "#6900b3",
+            "surface-container": "#1c2024",
+            "outline-variant": "#3d494c",
+            "on-secondary-fixed": "#2c0051",
+            "on-background": "#e0e3e8",
+            "tertiary": "#4edea3",
+            "on-secondary": "#490080",
+            "error-container": "#93000a",
+            "surface-container-low": "#181c20",
+            "on-error": "#690005",
+            "primary-container": "#06b6d4",
+            "on-surface-variant": "#bcc9cd",
+            "surface-container-lowest": "#0a0f13",
+            "on-surface": "#e0e3e8",
+            "secondary": "#ddb7ff",
+            "tertiary-fixed": "#6ffbbe",
+            "on-primary": "#003640",
+            "primary": "#4cd7f6",
+            "secondary-fixed": "#f0dbff",
+            "on-tertiary-container": "#00452e",
+            "secondary-container": "#6f00be",
+            "on-tertiary": "#003824",
+            "surface-tint": "#4cd7f6",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#31353a",
+            "surface": "#101418",
+            "tertiary-container": "#1bbd85",
+            "surface-container-high": "#262a2f",
+            "outline": "#869397",
+            "primary-fixed-dim": "#4cd7f6"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "gutter-sm": "0.5rem",
+            "gutter-md": "1rem",
+            "panel-padding-md": "1.25rem",
+            "gutter-lg": "1.5rem",
+            "panel-padding-sm": "0.75rem",
+            "panel-padding-lg": "2rem",
+            "margin-page": "1.5rem"
+          },
+          fontFamily: {
+            "code-lg": [ "JetBrains Mono" ],
+            "headline-md": [ "Space Grotesk" ],
+            "display": [ "Space Grotesk" ],
+            "headline-lg-mobile": [ "Space Grotesk" ],
+            "body-lg": [ "Space Grotesk" ],
+            "body-md": [ "Space Grotesk" ],
+            "telemetry-tag": [ "JetBrains Mono" ],
+            "body-sm": [ "Space Grotesk" ],
+            "display-mobile": [ "Space Grotesk" ],
+            "code-md": [ "JetBrains Mono" ],
+            "headline-lg": [ "Space Grotesk" ],
+            "headline-sm": [ "Space Grotesk" ]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0a0f13;
+        color: #e0e3e8;
+        overflow-x: hidden;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(10, 15, 19, 0.8);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(76, 215, 246, 0.3);
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(76, 215, 246, 0.6);
+      }
+    }
+    
+    .at-grid-bg {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(76, 215, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(76, 215, 246, 0.04) 1px, transparent 1px);
+    }
+    
+    /* Unified Cybernetic Obsidian Glass */
+    .cyber-card {
+      background: rgba(11, 17, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.08), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    .cyber-card:hover {
+      border-color: rgba(76, 215, 246, 0.5);
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.18), 0 24px 60px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(76, 215, 246, 0.12);
+    }
+
+    .at-glow-cyan {
+      box-shadow: 0 0 28px rgba(6, 182, 212, 0.45);
+    }
+
+    .at-glow-emerald {
+      box-shadow: 0 0 28px rgba(78, 222, 163, 0.4);
+    }
+
+    .at-glow-violet {
+      box-shadow: 0 0 28px rgba(221, 183, 255, 0.4);
+    }
+
+    /* Custom Cursor */
+    #cursor-follower {
+      pointer-events: none;
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(76, 215, 246, 0.6);
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      z-index: 9999;
+      mix-blend-mode: screen;
+    }
+    #cursor-dot {
+      pointer-events: none;
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #4cd7f6;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      box-shadow: 0 0 8px #4cd7f6;
+    }
+    
+    /* 3D Tilt perspective context */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .tilt-card {
+      transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    /* Animated dash for SVG topology cables */
+    @keyframes flowCable {
+      0% { stroke-dashoffset: 64; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .cable-flow {
+      stroke-dasharray: 6, 6;
+      animation: flowCable 1.8s linear infinite;
+    }
+    .cable-flow-fast {
+      stroke-dasharray: 4, 4;
+      animation: flowCable 0.9s linear infinite;
+    }
+
+    .vignette-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 40%, rgba(10, 15, 19, 0.85) 100%);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary/20 selection:text-primary">
+<script>
+  // --- SHARED AUTH GUARD ---
+  (function(){
+    if (!sessionStorage.getItem('nexus_auth') && !localStorage.getItem('nexus_auth')) {
+      window.location.href = 'login.html';
+    }
+  })();
+</script>
+<!-- ACTIVE THEORY CUSTOM CURSOR -->
+<div class="hidden md:block" id="cursor-follower" style="left: 238.765px; top: 25.7px; width: 32px; height: 32px; border-color: rgba(76, 215, 246, 0.6); background-color: transparent;"></div>
+<div class="hidden md:block" id="cursor-dot" style="left: 239px; top: 25px;"></div>
+<!-- AMBIENT TOP SCROLL PROGRESS BAR -->
+<div class="fixed top-0 left-0 right-0 h-[2px] bg-surface-container-high z-50">
+<div class="h-full bg-gradient-to-r from-primary via-secondary to-tertiary w-0 transition-all duration-75" id="scrollProgressBar" style="width: 16.1178%;"></div>
+</div>
+<!-- ACTIVE THEORY SHADER BACKGROUND -->
+
+<div class="vignette-overlay"></div>
+<div class="fixed inset-0 at-grid-bg pointer-events-none z-0 opacity-40"></div>
+<!-- FIXED FLOATING STAGE NAVIGATION (ACTIVE THEORY ANCHOR BAR) -->
+<aside class="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden 2xl:flex flex-col gap-5 items-end">
+<a class="stage-nav-item group flex items-center gap-3 text-right" data-stage="kernel" href="#stage-kernel">
+<span class="font-telemetry-tag text-[11px] tracking-widest text-primary font-bold transition-colors">01 KERNEL</span>
+<div class="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_#4cd7f6] transition-all"></div>
+</a>
+<a class="stage-nav-item group flex items-center gap-3 text-right" data-stage="topology" href="#stage-topology">
+<span class="font-telemetry-tag text-[11px] tracking-widest text-on-surface-variant group-hover:text-primary transition-colors">02 TOPOLOGY</span>
+<div class="w-2.5 h-2.5 rounded-full border border-primary/50 group-hover:bg-primary transition-all"></div>
+</a>
+<a class="stage-nav-item group flex items-center gap-3 text-right" data-stage="telemetry" href="#stage-telemetry">
+<span class="font-telemetry-tag text-[11px] tracking-widest text-on-surface-variant group-hover:text-primary transition-colors">03 TELEMETRY</span>
+<div class="w-2.5 h-2.5 rounded-full border border-primary/50 group-hover:bg-primary transition-all"></div>
+</a>
+<a class="stage-nav-item group flex items-center gap-3 text-right" data-stage="verdict" href="#stage-verdict">
+<span class="font-telemetry-tag text-[11px] tracking-widest text-on-surface-variant group-hover:text-primary transition-colors">04 VERDICT</span>
+<div class="w-2.5 h-2.5 rounded-full border border-primary/50 group-hover:bg-primary transition-all"></div>
+</a>
+</aside>
+<!-- COLLAPSIBLE LATERAL SYSTEM COCKPIT (LEFT DOCK) -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest/85 backdrop-blur-2xl z-40 flex flex-col justify-between border-r border-primary/20 shadow-2xl transition-transform duration-300 -translate-x-full lg:translate-x-0" id="mainSidebar">
+<div class="flex flex-col">
+<!-- Brand & Version Stamp -->
+<div class="h-16 px-gutter-md flex items-center justify-between border-b border-cyan-500/15 bg-surface-container-low/40">
+<div class="flex items-center gap-gutter-sm">
+<div class="relative flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div>
+<div class="absolute w-5 h-5 rounded-full bg-primary/25 animate-ping"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase font-bold">NEXUS</span>
+<span class="font-telemetry-tag text-[10px] text-primary tracking-widest">OS v2.4 // ACTIVE KERNEL</span>
+</div>
+</div>
+<span class="font-code-md text-code-md text-tertiary bg-surface-container-high/80 border border-tertiary/20 px-gutter-sm py-0.5 rounded">PROD</span>
+</div>
+<!-- Navigation Matrices -->
+<div class="px-gutter-md py-gutter-md">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase tracking-widest block mb-gutter-sm">Operational Matrices</span>
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg transition-all bg-primary/10 border border-primary/30 text-primary font-bold shadow-[0_0_15px_rgba(76,215,246,0.15)]" href="dashboard.html#stage-kernel">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span class="font-body-sm text-body-sm">Swarm Topology</span>
+</a>
+<a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface transition-all border border-transparent hover:border-white/5" href="dashboard.html#stage-topology">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="font-body-sm text-body-sm">DAG Execution</span>
+</a>
+<a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface transition-all border border-transparent hover:border-white/5" href="dashboard.html#stage-telemetry">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="font-body-sm text-body-sm">Inference Bus</span>
+</a>
+<a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface transition-all border border-transparent hover:border-white/5" href="dashboard.html#stage-verdict">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+<span class="font-body-sm text-body-sm">Arbitration Drilldown</span>
+</a>
+<a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container/60 hover:text-on-surface transition-all border border-transparent hover:border-white/5" href="profile.html">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span class="font-body-sm text-body-sm">Operator Profile</span>
+</a>
+</nav>
+</div>
+<!-- Live Pipeline State Indicator -->
+<div class="px-gutter-md pt-2">
+<div class="p-panel-padding-sm rounded-lg bg-surface-container-low/60 border border-white/5 flex flex-col gap-2">
+<div class="flex items-center justify-between text-telemetry-tag font-telemetry-tag">
+<span class="text-on-surface-variant">PIPELINE ENTROPY</span>
+<span class="text-tertiary">Δ 0.042</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-tertiary to-primary w-[74%]"></div>
+</div>
+<div class="flex items-center justify-between text-[10px] font-code-md text-outline">
+<span class="">MEM: 18.4GB / 32GB</span>
+<span class="">INT4 TENSOR</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Engine Telemetry Strip at Bottom -->
+<div class="p-gutter-md bg-surface-container-lowest/70 border-t border-white/5 flex flex-col gap-gutter-sm">
+<div class="bg-surface-container-low/80 p-panel-padding-sm rounded-lg flex flex-col gap-1 border border-primary/10">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">ACTIVE ENGINE</span>
+<span class="font-telemetry-tag text-telemetry-tag text-tertiary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> ONLINE
+        </span>
+</div>
+
+</div>
+<button class="flex items-center justify-center gap-1.5 px-gutter-md py-2 rounded-lg bg-error-container/20 text-error hover:bg-error-container/40 transition-all font-telemetry-tag text-telemetry-tag uppercase tracking-wider" id="sidebarLogoutBtn">
+<span class="material-symbols-outlined text-[16px]">power_settings_new</span>
+            Revoke Session
+          </button>
+</div>
+</aside>
+<!-- MAIN VIEWPORT WRAPPER -->
+<div class="lg:pl-64 flex flex-col min-h-screen relative z-10">
+<!-- TOP TELEMETRY HUD BAR -->
+<header class="fixed top-0 left-0 lg:left-64 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-2xl z-40 px-gutter-lg flex items-center justify-between border-b border-primary/15">
+<div class="flex items-center gap-gutter-md">
+<button class="lg:hidden p-1.5 rounded text-on-surface-variant hover:text-on-surface" id="mobileSidebarToggle">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-gutter-sm bg-[#0b1117]/80 border border-primary/30 px-3 py-1 rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.1)]">
+<span class="material-symbols-outlined text-[16px] text-primary animate-spin" style="animation-duration: 8s;">sync</span>
+
+</div>
+<div class="hidden xl:flex items-center gap-gutter-md border-l border-white/10 pl-gutter-md">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+
+
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-code-md text-code-md text-on-surface-variant">AGENTS:</span>
+<span class="font-code-md text-code-md text-on-surface">3+1 SYNTH</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-md text-code-md text-on-surface-variant">SYS:</span>
+<span class="font-code-md text-code-md text-tertiary">READY</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-gutter-md">
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-primary transition-colors hidden sm:inline" href="profile.html" id="operatorHandleHeaderLink">OPERATOR</a>
+<a class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center p-[1px]" href="profile.html" title="Operator Profile">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">token</span>
+</div>
+</a>
+</div>
+</header>
+<!-- ACTIVE THEORY NARRATIVE CONTENT STAGES -->
+<main class="flex-1 pt-20 px-gutter-md sm:px-gutter-lg pb-16 max-w-[1720px] mx-auto w-full flex flex-col gap-10 relative">
+<!-- TOP COMMAND BAR OVERLAY (STATUS STRIP) -->
+<div class="cyber-card rounded-xl p-panel-padding-sm flex flex-wrap items-center justify-between gap-gutter-md mt-2">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-gutter-md relative z-10">
+<span class="inline-flex items-center gap-2 px-gutter-sm py-1 rounded-md bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-code-md text-code-md">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+          SWARM_STATE: <span class="font-bold" id="swarmStatusText">STANDBY_READY</span>
+</span>
+<span class="hidden md:inline-block font-code-md text-code-md text-on-surface-variant">
+          TOPOLOGY: <span class="text-primary font-bold tracking-wide">3 SPECIALISTS → 1 MASTER SYNTHESIZER</span>
+</span>
+</div>
+<div class="flex items-center gap-gutter-sm relative z-10">
+<button class="px-panel-padding-sm py-1 rounded-lg bg-surface-container-high/80 border border-white/10 text-on-surface font-code-md text-code-md hover:border-primary/40 transition-all flex items-center gap-1.5" id="modeToggleBtn">
+<span class="w-2 h-2 rounded-full bg-tertiary" id="modeIndicatorDot"></span>
+<span id="modeText" class="">AUTO-FALLBACK MOCK</span>
+</button>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- STAGE 1: HERO COCKPIT & SYNTHESIS KERNEL                          -->
+<!-- ================================================================= -->
+<section class="scroll-mt-24 flex flex-col gap-gutter-lg" id="stage-kernel">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg items-stretch">
+<!-- Left Hero Command Terminal (Col 7) -->
+<div class="xl:col-span-7 flex flex-col">
+<div class="cyber-card rounded-2xl p-panel-padding-lg flex flex-col justify-between gap-gutter-md tilt-card group h-full" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-16 -right-16 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="flex flex-col gap-gutter-md relative z-10">
+<!-- Kinetic Headline Header -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary/15 text-primary border border-primary/30 font-telemetry-tag text-telemetry-tag tracking-wider uppercase font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    STAGE 01 // COGNITIVE RUNTIME
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high/80 text-outline border border-white/5 font-telemetry-tag text-telemetry-tag">
+                    PARALLEL_v2.4
+                  </span>
+</div>
+<h1 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl font-black text-on-surface tracking-tight uppercase leading-tight">
+                  Nexus <span class="text-primary tracking-normal font-light">//</span> MULTI-AGENT REASONING KERNEL
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+                  High-throughput parallel specialist adjudication: <span class="text-tertiary">Groq LPU</span> (Unit Economics), <span class="text-primary">NVIDIA Nemotron-3.5</span> (HPC Feasibility), and <span class="text-secondary">Groq Qwen</span> (Moats) synthesized by <span class="text-on-surface font-semibold">Google Gemini Decision Matrix</span>.
+                </p>
+</div>
+<!-- Problem Ingestion Textarea Box -->
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex justify-between items-center">
+<label class="font-telemetry-tag text-telemetry-tag text-primary uppercase tracking-wider flex items-center gap-1.5" for="missionPrompt">
+<span class="material-symbols-outlined text-[16px]">data_object</span>
+                    { } STRATEGIC CHALLENGE / VENTURE THESIS
+                  </label>
+<span class="font-code-md text-code-md text-on-surface-variant" id="charCounter">201 / 2,400 chars</span>
+</div>
+<div class="relative rounded-xl bg-surface-container-low/90 focus-within:bg-surface-container border border-primary/25 focus-within:border-primary transition-all p-panel-padding-md flex flex-col gap-gutter-sm shadow-inner">
+<textarea class="w-full bg-transparent text-on-surface font-body-lg text-body-lg placeholder:text-outline/40 focus:outline-none resize-none leading-relaxed min-h-[110px]" id="missionPrompt" placeholder="Describe your venture thesis, HPC challenge, or strategic move... e.g. 'Deploy an autonomous robotic micro-fulfillment network across 14 dense tier-1 European metropolitan hubs with sub-18 minute delivery SLA...'"></textarea>
+<div class="flex flex-wrap items-center justify-between gap-gutter-sm pt-2 border-t border-white/5">
+<div class="flex items-center gap-2 text-on-surface-variant font-code-md text-code-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary">memory</span>
+<span class="">Context: 128k Shared Window</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-on-surface-variant hover:text-error text-code-md font-code-md transition-colors px-2.5 py-1.5 rounded hover:bg-surface-container-high" id="clearPromptBtn">
+                        CLEAR
+                      </button>
+<button class="px-panel-padding-lg py-2.5 rounded-xl bg-gradient-to-r from-primary-container via-primary to-primary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] at-glow-cyan" id="executeProtocolBtn">
+<span class="material-symbols-outlined text-[20px] animate-pulse">bolt</span>
+<span class="">EXECUTE CONSENSUS</span>
+<span class="ml-1 px-1.5 py-0.5 rounded bg-on-primary/20 text-on-primary font-telemetry-tag text-telemetry-tag">⌘↵</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Seed Scenario Chips -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-telemetry-tag text-telemetry-tag text-outline uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">play_circle</span>
+                  PRELOAD SEED SCENARIOS:
+                </span>
+<div class="flex flex-wrap gap-2.5">
+<button class="seed-chip px-gutter-md py-2 rounded-lg bg-surface-container-high/60 hover:bg-tertiary/10 border border-white/5 hover:border-tertiary/40 hover:text-tertiary transition-all text-on-surface font-code-md text-code-md flex items-center gap-2 active:scale-95" data-seed="logistics">
+<span class="material-symbols-outlined text-[16px] text-tertiary">local_shipping</span>
+                    Autonomous Last-Mile Fleet
+                  </button>
+<button class="seed-chip px-gutter-md py-2 rounded-lg bg-surface-container-high/60 hover:bg-primary/10 border border-white/5 hover:border-primary/40 hover:text-primary transition-all text-on-surface font-code-md text-code-md flex items-center gap-2 active:scale-95" data-seed="semiconductors">
+<span class="material-symbols-outlined text-[16px] text-primary">stream_apps</span>
+                    Edge AI Vision Chip Foundry
+                  </button>
+<button class="seed-chip px-gutter-md py-2 rounded-lg bg-surface-container-high/60 hover:bg-secondary/10 border border-white/5 hover:border-secondary/40 hover:text-secondary transition-all text-on-surface font-code-md text-code-md flex items-center gap-2 active:scale-95" data-seed="biotech">
+<span class="material-symbols-outlined text-[16px] text-secondary">strikethrough_s</span>
+                    Synthetic Bio-Manufacturing Platform
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Top Overview Metrics (Col 5) - Real-Time Hardware Bus -->
+<div class="xl:col-span-5 flex flex-col">
+<div class="cyber-card rounded-2xl p-panel-padding-lg flex flex-col justify-between gap-gutter-md tilt-card group h-full" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-16 -right-16 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all duration-700"></div>
+<div class="flex flex-col gap-gutter-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary/15 text-primary border border-primary/30 font-telemetry-tag text-telemetry-tag tracking-wider uppercase font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    REAL-TIME HARDWARE BUS
+                  </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high/80 text-outline border border-white/5 font-telemetry-tag text-telemetry-tag">
+                    HARDWARE_SYNC
+                  </span>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary/10 border border-tertiary/30 text-tertiary font-code-md text-code-md">HEALTH 100%</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Accelerator Clusters</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ultra-low latency inference interconnect &amp; memory bandwidth fabric</p>
+</div>
+<!-- Hardware Gauges -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/90 border border-white/5 flex flex-col gap-1">
+<span class="font-telemetry-tag text-[10px] text-on-surface-variant">GROQ LPU TOK/S</span>
+<span class="font-code-lg text-xl font-bold text-tertiary" id="tokSecMeter">1,480</span>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1">
+<div class="h-full bg-tertiary w-[88%]"></div>
+</div>
+</div>
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/90 border border-white/5 flex flex-col gap-1">
+<span class="font-telemetry-tag text-[10px] text-on-surface-variant">NVIDIA DGX H100</span>
+<span class="font-code-lg text-xl font-bold text-primary" id="gpuUtilMeter">94.2%</span>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/90 border border-white/5 flex flex-col gap-1">
+<span class="font-telemetry-tag text-[10px] text-on-surface-variant">GEMINI TOKENS</span>
+<span class="font-code-lg text-xl font-bold text-secondary" id="geminiTokensMeter">42.8k</span>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1">
+<div class="h-full bg-secondary w-[65%]"></div>
+</div>
+</div>
+</div>
+<!-- Live Execution Pipeline Micro-Tracker -->
+<div class="p-panel-padding-md rounded-xl bg-surface-container-low/70 border border-white/5 flex flex-col gap-2">
+<div class="flex items-center justify-between text-code-md font-code-md">
+<span class="text-on-surface-variant">Distributed Memory Cache:</span>
+<span class="text-primary font-bold">128.4 MB/s synchronized</span>
+</div>
+<div class="flex items-center justify-between text-code-md font-code-md">
+<span class="text-on-surface-variant">Consensus Convergence:</span>
+<span class="text-tertiary font-bold">Alpha = 0.948 (Supermajority)</span>
+</div>
+<div class="flex items-center justify-between text-code-md font-code-md">
+<span class="text-on-surface-variant">Deadlock Recovery Guard:</span>
+<span class="text-outline">Active (Auto-failover enabled)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-white/5 text-code-md font-code-md text-on-surface-variant relative z-10">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                Parallel Sub-Process: 3 In-flight
+              </span>
+<a class="text-primary hover:underline flex items-center gap-1 text-telemetry-tag font-telemetry-tag" href="#stage-topology">
+                INSPECT DAG GRAPH <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================================================================= -->
+<!-- STAGE 2: LIVE IN-FLIGHT PARALLEL NEURAL GRAPH (DAG TOPOLOGY)     -->
+<!-- ================================================================= -->
+<section class="scroll-mt-24 flex flex-col gap-gutter-md" id="stage-topology">
+<div class="cyber-card rounded-2xl p-panel-padding-lg flex flex-col gap-gutter-md tilt-card group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
+<!-- Stage Header -->
+<div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4 relative z-10">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary/15 text-primary border border-primary/30 font-telemetry-tag text-telemetry-tag tracking-wider uppercase font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                STAGE 02 // DIRECTED ACYCLIC GRAPH
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high/80 text-outline border border-white/5 font-telemetry-tag text-telemetry-tag">
+                DAG DIRECTED // TENSOR FLOW
+              </span>
+</div>
+<h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-on-surface">Neural Arbitration Topology</h2>
+</div>
+</div>
+<!-- ARCHITECTURAL VISUALIZATION CONTAINER -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest/80 border border-primary/20 p-panel-padding-lg flex flex-col gap-6 overflow-hidden relative z-10">
+<!-- SVG Flowing Vector Connectors -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="gradFlowEmerald" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#ddb7ff" stop-opacity="0.3"></stop>
+</linearGradient>
+<linearGradient id="gradFlowCyan" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4cd7f6" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#ddb7ff" stop-opacity="0.3"></stop>
+</linearGradient>
+<linearGradient id="gradFlowViolet" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ddb7ff" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#ddb7ff" stop-opacity="0.3"></stop>
+</linearGradient>
+</defs>
+<line class="cable-flow" stroke="url(#gradFlowEmerald)" stroke-width="2" x1="20%" x2="50%" y1="130" y2="230"></line>
+<line class="cable-flow-fast" stroke="url(#gradFlowCyan)" stroke-width="2" x1="50%" x2="50%" y1="130" y2="230"></line>
+<line class="cable-flow" stroke="url(#gradFlowViolet)" stroke-width="2" x1="80%" x2="50%" y1="130" y2="230"></line>
+</svg>
+<!-- 3 SPECIALIST AGENT SOURCE NODES (PARALLEL STREAMS) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md relative z-10">
+<!-- AGENT 1: FINANCE AGENT -->
+<div class="cyber-card tilt-card rounded-xl p-panel-padding-md flex flex-col justify-between gap-3 group" id="nodeAgentFinance" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-tertiary-container/20 border border-tertiary/40 text-tertiary flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(78,222,163,0.15)]">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">FINANCE AGENT</span>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-telemetry-tag text-[10px] w-fit mt-0.5">Groq // GPT-OSS-20B</span>
+</div>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag px-2 py-0.5 rounded bg-surface-container border border-tertiary/30 text-tertiary font-bold" id="agentFinStatus">IDLE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10 leading-relaxed">
+                Evaluates unit economics, cash runway, CAPEX/OPEX depreciation, and 5-year IRR payback schedules.
+              </p>
+<div class="flex items-center justify-between pt-2 border-t border-white/5 font-code-md text-code-md relative z-10">
+<span class="text-outline">Execution:</span>
+<span class="text-tertiary font-bold" id="agentFinMs">0ms</span>
+</div>
+</div>
+<!-- AGENT 2: TECHNICAL AGENT -->
+<div class="cyber-card tilt-card rounded-xl p-panel-padding-md flex flex-col justify-between gap-3 group" id="nodeAgentTech" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/20 border border-primary/40 text-primary flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(76,215,246,0.15)]">
+<span class="material-symbols-outlined text-[22px]">developer_board</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">TECHNICAL AGENT</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary font-telemetry-tag text-[10px] w-fit mt-0.5">NVIDIA Nemotron-3.5</span>
+</div>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag px-2 py-0.5 rounded bg-surface-container border border-primary/30 text-primary font-bold" id="agentTechStatus">IDLE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10 leading-relaxed">
+                Validates distributed HPC feasibility, edge inference latency limits, thermal envelopes, and sensor fusion SLAs.
+              </p>
+<div class="flex items-center justify-between pt-2 border-t border-white/5 font-code-md text-code-md relative z-10">
+<span class="text-outline">Execution:</span>
+<span class="text-primary font-bold" id="agentTechMs">0ms</span>
+</div>
+</div>
+<!-- AGENT 3: MARKET AGENT -->
+<div class="cyber-card tilt-card rounded-xl p-panel-padding-md flex flex-col justify-between gap-3 group" id="nodeAgentMarket" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary/20 border border-secondary/40 text-secondary flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(221,183,255,0.15)]">
+<span class="material-symbols-outlined text-[22px]">radar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">MARKET AGENT</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary/20 text-secondary font-telemetry-tag text-[10px] w-fit mt-0.5">Groq Qwen-3.8-27B</span>
+</div>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag px-2 py-0.5 rounded bg-surface-container border border-secondary/30 text-secondary font-bold" id="agentMktStatus">IDLE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10 leading-relaxed">
+                Quantifies TAM/SAM ceilings, defensibility moats, regional regulatory friction, and competitive vulnerability.
+              </p>
+<div class="flex items-center justify-between pt-2 border-t border-white/5 font-code-md text-code-md relative z-10">
+<span class="text-outline">Execution:</span>
+<span class="text-secondary font-bold" id="agentMktMs">0ms</span>
+</div>
+</div>
+</div>
+<!-- DOWNSTREAM CONVERGENCE CONDUIT BAR -->
+<div class="flex items-center justify-center py-2 relative z-10">
+<div class="flex items-center gap-3 px-gutter-md py-1.5 rounded-full bg-surface-container-high/90 border border-primary/30 text-primary text-telemetry-tag font-telemetry-tag shadow-[0_0_15px_rgba(76,215,246,0.2)]">
+<span class="material-symbols-outlined text-[16px] animate-bounce">south</span>
+<span class="">CONVERGENT TENSOR BUS (CROSS-ATTENTION MATRIX)</span>
+<span class="material-symbols-outlined text-[16px] animate-bounce">south</span>
+</div>
+</div>
+<!-- MASTER ARBITRATOR: DECISION AGENT -->
+<div class="cyber-card tilt-card rounded-2xl p-panel-padding-md flex flex-col md:flex-row items-center justify-between gap-4 relative z-10" id="nodeAgentDecision" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary via-secondary to-tertiary p-[1.5px] flex items-center justify-center shadow-lg">
+<div class="w-full h-full bg-surface-container-lowest rounded-[10px] flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px] text-primary">neurology</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">DECISION AGENT</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/50 border border-secondary/40 text-secondary font-telemetry-tag text-telemetry-tag font-bold">
+                    GEMINI 1.5 PRO
+                  </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Master Synthesizer: Resolves trade-offs, weights divergent opinions &amp; signs verdict</span>
+</div>
+</div>
+<div class="flex items-center gap-6 relative z-10">
+<div class="flex flex-col items-end">
+<span class="font-telemetry-tag text-telemetry-tag text-secondary font-bold" id="decisionAgentStatus">STANDBY</span>
+<span class="font-code-md text-code-md text-primary" id="decisionAgentConfidence">Conf: --%</span>
+</div>
+<div class="hidden sm:block w-px h-8 bg-white/10"></div>
+<div class="text-right hidden sm:block">
+<span class="font-telemetry-tag text-[10px] text-outline block">ARBITRATION MODE</span>
+<span class="font-code-md text-code-md text-on-surface font-bold">SUPERMAJORITY</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================================================================= -->
+<!-- STAGE 3: COGNITIVE STREAM & HIGH-BANDWIDTH TELEMETRY LOGS         -->
+<!-- ================================================================= -->
+<section class="scroll-mt-24 flex flex-col gap-gutter-md" id="stage-telemetry">
+<div class="cyber-card rounded-2xl p-panel-padding-lg flex flex-col gap-gutter-md tilt-card group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-16 -right-16 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="flex items-center justify-between border-b border-white/10 pb-3 relative z-10">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary">terminal</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary/15 text-primary border border-primary/30 font-telemetry-tag text-telemetry-tag tracking-wider uppercase font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  STAGE 03 // TELEMETRY BUS &amp; AUDIT LOGS
+                </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high/80 text-outline border border-white/5 font-telemetry-tag text-telemetry-tag">
+                  TRACE_STREAM
+                </span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-1">Inference Audit Traces &amp; DAG Logs</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-telemetry-tag text-telemetry-tag px-2.5 py-1 rounded bg-tertiary/10 border border-tertiary/30 text-tertiary font-bold" id="activeWorkerCount">
+              0 NODES ACTIVE
+            </span>
+<button class="font-code-md text-code-md text-outline hover:text-primary transition-colors flex items-center gap-1" id="clearLogsBtn">
+<span class="material-symbols-outlined text-[14px]">backspace</span> Clear
+            </button>
+</div>
+</div>
+<!-- Monospace Terminal Window -->
+<div class="h-56 overflow-y-auto bg-[#070b0e]/95 border border-primary/25 p-panel-padding-md rounded-xl flex flex-col gap-1.5 font-code-md text-code-md text-on-surface-variant font-mono scroll-smooth shadow-inner relative z-10" id="telemetryTerminal">
+<div class="text-outline-variant flex items-center gap-2">
+<span class="text-primary">[SYSTEM]</span> Ingestion kernel loaded. Parallel reasoning matrix armed on Groq LPU &amp; NVIDIA DGX.
+          </div>
+<div class="text-outline-variant flex items-center gap-2">
+<span class="text-tertiary">[READY]</span> Awaiting strategic challenge formulation. Target REST route: POST /analyze
+          </div>
+</div>
+<!-- Micro Telemetry Gauges -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-sm text-code-md font-code-md relative z-10">
+<div class="p-panel-padding-sm bg-surface-container-low/70 border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-outline">Packet Buffer:</span>
+<span class="text-primary font-semibold">0.08 ms</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low/70 border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-outline">KV Cache Hit:</span>
+<span class="text-tertiary font-semibold">99.4%</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low/70 border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-outline">Tokens Emitted:</span>
+<span class="text-secondary font-semibold" id="tokensEmittedCounter">0 tok</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low/70 border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-outline">Thermal Delta:</span>
+<span class="text-on-surface font-semibold">+1.2 °C</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================================================================= -->
+<!-- STAGE 4: SYNTHESIZED VERDICT & IN-DEPTH SPECIALIST DRILLDOWN      -->
+<!-- ================================================================= -->
+<section class="scroll-mt-24 hidden flex-col gap-gutter-lg transition-all duration-700" id="stage-verdict">
+<!-- TOP SYNTHESIZED VERDICT BANNER -->
+<div class="w-full cyber-card rounded-2xl p-panel-padding-lg flex flex-col gap-gutter-md border-tertiary/50 at-glow-emerald tilt-card group">
+<!-- Radial Accent Glow -->
+<div class="absolute -top-16 -right-16 w-96 h-96 bg-tertiary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-gutter-md relative z-10">
+<div class="flex items-center gap-gutter-md">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container/30 border border-tertiary/40 text-tertiary flex items-center justify-center flex-shrink-0 shadow-lg" id="verdictIconBox">
+<span class="material-symbols-outlined text-[36px]" id="verdictIcon">verified</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-tertiary/20 border border-tertiary/40 text-tertiary font-headline-sm text-headline-sm font-bold tracking-wide" id="verdictBadge">
+                  HIGH VIABILITY: 88 / 100
+                </span>
+<span class="font-code-md text-code-md text-on-surface-variant font-medium">CONFIDENCE: 94.8%</span>
+</div>
+<h3 class="font-headline-lg text-2xl sm:text-3xl font-bold text-on-surface mt-1" id="verdictTitle">
+                Recommendation: PROCEED WITH REGIONAL PILOT &amp; ACCELERATED FLEET CAPEX
+              </h3>
+</div>
+</div>
+<div class="flex items-center gap-gutter-sm flex-wrap">
+<button class="px-gutter-md py-2.5 rounded-xl bg-surface-container-high/90 border border-white/10 text-on-surface font-code-md text-code-md hover:border-primary/40 transition-all flex items-center gap-2" id="exportReportBtn">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+              EXPORT JSON
+            </button>
+<button class="px-gutter-md py-2.5 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-bold hover:bg-primary-fixed transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(76,215,246,0.4)]" id="resetAnalysisBtn">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+              ↺ NEW ANALYSIS
+            </button>
+</div>
+</div>
+<!-- EXECUTIVE SUMMARY QUOTE BLOCK -->
+<div class="p-panel-padding-md bg-surface-container-low/90 border border-primary/20 rounded-xl flex flex-col gap-2 relative z-10">
+<div class="flex items-center gap-2 text-primary font-telemetry-tag text-telemetry-tag uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-[16px]">format_quote</span>
+            GEMINI ARBITRATION EXECUTIVE DIRECTIVE
+          </div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed italic" id="verdictSummaryQuote">
+            "The multi-agent swarm converges with high consensus. While NVIDIA Nemotron signals thermal and edge computing latencies on route-dispatch at scale, Groq Finance confirms unit margins exceed 44% with payback inside 16 months. Qwen Market identifies zero direct tier-1 incumbent overlap in automated urban micro-nodes. We advise immediate capital deployment for hardware-in-the-loop MVP."
+          </p>
+</div>
+<!-- SUMMARY STAT TILES -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-md pt-1 relative z-10" id="summaryStatTiles">
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/80 border border-tertiary/20 flex flex-col">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">CAPITAL EFFICIENCY</span>
+<span class="font-headline-md text-headline-md text-tertiary font-bold mt-1" id="metricCapEff">3.4x LTV/CAC</span>
+<span class="font-body-sm text-body-sm text-outline">Payback in 14.2 mos</span>
+</div>
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/80 border border-primary/20 flex flex-col">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">TECHNICAL FEASIBILITY</span>
+<span class="font-headline-md text-headline-md text-primary font-bold mt-1" id="metricTechFeas">91.4%</span>
+<span class="font-body-sm text-body-sm text-outline">&lt;14ms inference loop</span>
+</div>
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/80 border border-secondary/20 flex flex-col">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">MARKET CONQUEST RATE</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold mt-1" id="metricMarketDef">High Moat</span>
+<span class="font-body-sm text-body-sm text-outline">Network effects = Strong</span>
+</div>
+<div class="p-panel-padding-sm rounded-xl bg-surface-container-low/80 border border-white/10 flex flex-col">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">CONSENSUS DIVERGENCE</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-1" id="metricDivergence">Delta &lt; 0.12</span>
+<span class="font-body-sm text-body-sm text-outline">Zero agent deadlocks</span>
+</div>
+</div>
+</div>
+<!-- 3 SPECIALIST DEEP-DIVE TABS & PANELS -->
+<div class="w-full cyber-card rounded-2xl p-panel-padding-lg flex flex-col gap-gutter-md tilt-card group">
+<!-- Tab Selectors -->
+<div class="flex items-center justify-between flex-wrap gap-gutter-sm border-b border-white/10 pb-3 relative z-10">
+<div class="flex items-center gap-2 p-1 bg-surface-container-lowest/80 border border-white/10 rounded-xl">
+<button class="tab-pill px-gutter-md py-2 rounded-lg bg-surface-container-high border border-tertiary/40 text-tertiary font-headline-sm text-headline-sm flex items-center gap-2 font-bold" id="tabBtnFinance">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span class="">Finance Model</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary/20 text-tertiary font-telemetry-tag text-telemetry-tag">Groq</span>
+</button>
+<button class="tab-pill px-gutter-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2" id="tabBtnTech">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+<span class="">Technical Stack</span>
+<span class="px-1.5 py-0.2 rounded bg-primary/20 text-primary font-telemetry-tag text-telemetry-tag">NVIDIA</span>
+</button>
+<button class="tab-pill px-gutter-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2" id="tabBtnMarket">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+<span class="">Market &amp; TAM</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary/20 text-secondary font-telemetry-tag text-telemetry-tag">Groq</span>
+</button>
+<button class="tab-pill px-gutter-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2" id="tabBtnMatrix">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+<span class="">Synthesis Rationale</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-outline font-telemetry-tag text-telemetry-tag">Arbitration</span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-code-md text-code-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+            Cryptographically Signed by Synthesis Runtime
+          </div>
+</div>
+<!-- TAB CONTENT: 1. FINANCE PANEL -->
+<div class="tab-panel flex flex-col gap-gutter-md relative z-10" id="panelFinance">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-md">
+<div class="lg:col-span-8 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">CASH FLOW PROJECTION &amp; BREAKEVEN TRAJECTORY</span>
+<span class="font-code-md text-code-md text-tertiary">Break-even: Month 14.5</span>
+</div>
+<div class="w-full h-48 py-2">
+<svg class="w-full h-full" viewBox="0 0 700 160">
+<defs>
+<linearGradient id="chartAreaGrad" x1="0%" x2="0%" y1="0%" y2="1">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#4edea3" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<line stroke="#3d494c" stroke-dasharray="4,4" stroke-width="1" x1="40" x2="680" y1="120" y2="120"></line>
+<path d="M 60 140 Q 180 135, 280 110 T 500 50 T 660 20 L 660 120 L 60 120 Z" fill="url(#chartAreaGrad)"></path>
+<path d="M 60 140 Q 180 135, 280 110 T 500 50 T 660 20" fill="none" stroke="#4edea3" stroke-width="3"></path>
+<circle class="animate-ping" cx="310" cy="100" fill="#4edea3" r="5"></circle>
+<circle cx="310" cy="100" fill="#4edea3" r="5"></circle>
+<text class="font-code-md text-[12px]" fill="#4edea3" x="325" y="98">Breakeven ($0 net)</text>
+<text class="font-telemetry-tag text-[10px]" fill="#869397" x="60" y="150">Q1 (Initial CAPEX)</text>
+<text class="font-telemetry-tag text-[10px]" fill="#869397" x="250" y="150">Q3 (Fleet Expansion)</text>
+<text class="font-telemetry-tag text-[10px]" fill="#869397" x="470" y="150">Q5 (Unit Leverage)</text>
+<text class="font-telemetry-tag text-[10px]" fill="#869397" x="630" y="150">Q7 ($4.8M ARR)</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter-sm pt-2">
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg border border-white/5">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">INITIAL CAPEX</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1 block">$1.85M - $2.40M</span>
+<span class="font-body-sm text-body-sm text-outline">Hardware, edge nodes &amp; licensing</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg border border-white/5">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">PROJECTED MARGIN</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold mt-1 block">52.8% at Steady State</span>
+<span class="font-body-sm text-body-sm text-outline">Expands with software density</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg border border-white/5">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">5-YEAR NET IRR</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1 block">38.4%</span>
+<span class="font-body-sm text-body-sm text-tertiary">Top Decile Venture Profile</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">OPEX DISTRIBUTION VECTOR</span>
+<div class="flex flex-col gap-2.5 mt-1">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-md text-code-md">
+<span class="text-on-surface-variant">Compute &amp; GPU Cloud</span>
+<span class="text-on-surface font-bold">34% ($42k/mo)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 34%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-md text-code-md">
+<span class="text-on-surface-variant">Field Ops &amp; Maintenance</span>
+<span class="text-on-surface font-bold">28% ($35k/mo)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-md text-code-md">
+<span class="text-on-surface-variant">Regulatory &amp; Compliance</span>
+<span class="text-on-surface font-bold">18% ($22k/mo)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-md text-code-md">
+<span class="text-on-surface-variant">Talent &amp; Overhead</span>
+<span class="text-on-surface font-bold">20% ($25k/mo)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-surface-bright rounded-full" style="width: 20%"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-gutter-sm bg-surface-container-low border border-tertiary/20 rounded-lg font-code-md text-code-md text-tertiary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="">Unit Economics: +$3.42 per fulfilled run</span>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT: 2. TECHNICAL PANEL -->
+<div class="tab-panel hidden flex-col gap-gutter-md relative z-10" id="panelTech">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-md">
+<div class="lg:col-span-7 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">RECOMMENDED DISTRIBUTED ARCHITECTURE</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Evaluated by NVIDIA Nemotron-3.5-Lightning. Cluster optimization guarantees sub-100ms multi-modal sensor fusion with fault-tolerant edge failover.
+              </p>
+<div class="flex flex-col gap-2 mt-2 font-code-md text-code-md">
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-primary font-bold">INGESTION TIER:</span>
+<span class="text-on-surface">Apache Kafka + gRPC Edge Sockets (120k eps)</span>
+</div>
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-primary font-bold">INFERENCE ENGINE:</span>
+<span class="text-on-surface">vLLM + TensorRT-LLM on 8x NVIDIA H100 SXM5</span>
+</div>
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-primary font-bold">STATE STORE:</span>
+<span class="text-on-surface">Qdrant Vector Engine + Redis Enterprise Cluster</span>
+</div>
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<span class="text-primary font-bold">FAILOVER LATENCY:</span>
+<span class="text-tertiary">18ms via Hot Standby Node Mesh</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">CRITICAL BOTTLENECK PROFILE</span>
+<div class="flex flex-col gap-2 mt-1">
+<div class="p-panel-padding-sm bg-surface-container-low border border-primary/20 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">thermostat</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Edge Device Thermal Throttling</span>
+<span class="font-body-sm text-body-sm text-outline">Quantize models from FP16 to INT4 to mitigate peak 45W draw.</span>
+</div>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low border border-tertiary/20 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[20px] mt-0.5">wifi_tethering_off</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Cellular 5G Packet Drop Risk</span>
+<span class="font-body-sm text-body-sm text-outline">Implement dead-reckoning Kalman filters for network dead zones.</span>
+</div>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low border border-secondary/20 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">speed</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">P99 Batch Latency: 92ms</span>
+<span class="font-body-sm text-body-sm text-outline">SLA threshold is 150ms. Headroom is comfortable (+38%).</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT: 3. MARKET PANEL -->
+<div class="tab-panel hidden flex-col gap-gutter-md relative z-10" id="panelMarket">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-md">
+<div class="lg:col-span-6 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">TOTAL ADDRESSABLE MARKET (TAM) RADAR</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Groq Qwen-3.8 synthesis of market whitespace, competitor moats, and regional regulatory moats.
+              </p>
+<div class="grid grid-cols-2 gap-gutter-sm mt-1">
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg border border-secondary/20">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">GLOBAL TAM (2025-2030)</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold mt-1 block">$18.4 Billion</span>
+<span class="font-body-sm text-body-sm text-outline">CAGR +26.4% per annum</span>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg border border-white/5">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">INITIAL SERVICEABLE SAM</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-1 block">$2.1 Billion</span>
+<span class="font-body-sm text-body-sm text-outline">Tier-1 EU Metropolitan Clusters</span>
+</div>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low rounded-lg mt-2 flex flex-col gap-1 border border-secondary/20">
+<span class="font-telemetry-tag text-telemetry-tag text-secondary uppercase font-bold">PRIMARY DEFENSIBILITY MOAT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Hyper-local spatial telemetry maps</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Each deployment cycle compounds proprietary localized navigation priors, driving competitors' failure rate up by 3.2x.
+                </p>
+</div>
+</div>
+<div class="lg:col-span-6 flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">COMPETITIVE LANDSCAPE BENCHMARK</span>
+<div class="flex flex-col gap-2 mt-1">
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Legacy Logistics Incumbents</span>
+<span class="font-body-sm text-body-sm text-outline">High OPEX, union contracts, zero autonomous tech</span>
+</div>
+<span class="px-2 py-1 rounded bg-tertiary-container/30 text-tertiary font-code-md text-code-md">VULNERABLE</span>
+</div>
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Cloud Gig-Economy Couriers</span>
+<span class="font-body-sm text-body-sm text-outline">Driver churn &gt;80% annually, margin collapse</span>
+</div>
+<span class="px-2 py-1 rounded bg-tertiary-container/30 text-tertiary font-code-md text-code-md">WEAK MOAT</span>
+</div>
+<div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Drone / Aerial Delivery Startups</span>
+<span class="font-body-sm text-body-sm text-outline">Severe airspace regulations in dense European city cores</span>
+</div>
+<span class="px-2 py-1 rounded bg-primary/20 text-primary font-code-md text-code-md">STALLED</span>
+</div>
+</div>
+<div class="mt-auto p-gutter-sm bg-surface-container-low border border-secondary/20 rounded-lg flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">BUYER CAC ESTIMATE:</span>
+<span class="font-code-md text-code-md text-secondary font-bold">$180 / B2B Commercial Node</span>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT: 4. SYNTHESIS MATRIX PANEL -->
+<div class="tab-panel hidden flex-col gap-gutter-md relative z-10" id="panelMatrix">
+<div class="bg-surface-container-lowest/80 border border-secondary/30 p-panel-padding-md rounded-xl flex flex-col gap-gutter-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">DECISION ARBITRATION MATRIX (GEMINI 1.5 PRO)</span>
+<span class="px-2.5 py-0.5 rounded bg-secondary-container/40 text-secondary font-code-md text-code-md font-bold">Cross-Agent Weights Active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Detailed record of how conflicting specialist perspectives were weighted, challenged, and resolved:
+            </p>
+<div class="flex flex-col gap-2.5 mt-2">
+<div class="p-panel-padding-sm bg-surface-container-low border border-tertiary/20 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-tertiary font-headline-sm text-headline-sm font-bold">Tension: CAPEX Timing vs Hardware Redundancy</span>
+<span class="font-telemetry-tag text-telemetry-tag text-primary">RESOLVED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Technical agent demanded dual-sensor LiDAR arrays on all units ($1,400 add per unit). Finance agent flagged this pushed payback to 21 months. Gemini mediated: Dual sensors on lead scouting rovers only, follower rovers leverage stereo cameras via mesh sync, saving $380k in initial CAPEX.
+                </p>
+</div>
+<div class="p-panel-padding-sm bg-surface-container-low border border-secondary/20 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-secondary font-headline-sm text-headline-sm font-bold">Tension: Regulatory Friction vs Rapid GTM</span>
+<span class="font-telemetry-tag text-telemetry-tag text-primary">RESOLVED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Market agent warned of European sidewalk accessibility permits taking 9+ months. Mediated directive: Partner with existing municipal micro-hub concessions under sandbox provisions to eliminate regulatory freeze period.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ERROR / DIAGNOSTIC RECOVERY CARD -->
+<div class="hidden flex-col gap-gutter-sm p-panel-padding-md bg-error-container/90 text-on-error-container rounded-xl border border-error/50 shadow-2xl backdrop-blur-xl" id="errorRecoveryCard">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-error">error</span>
+<span class="font-headline-sm text-headline-sm font-bold">API DISPATCH DIAGNOSTIC</span>
+</div>
+<button class="text-on-error-container hover:text-on-error transition-colors" id="dismissErrorBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md" id="errorMessageText">
+        Unable to complete POST to target endpoint. Initiating automatic fallback to local neural emulator.
+      </p>
+<div class="flex items-center gap-gutter-sm pt-1">
+<button class="px-gutter-md py-1.5 rounded-lg bg-on-error-container text-error-container font-code-md text-code-md font-bold hover:opacity-90 transition-opacity" id="retryApiBtn">
+          RETRY CONNECTION
+        </button>
+<button class="px-gutter-md py-1.5 rounded-lg bg-surface-container-high text-on-surface font-code-md text-code-md hover:bg-surface-container transition-colors" id="forceMockBtn">
+          CONTINUE WITH SIMULATED SYNTHESIS
+        </button>
+</div>
+</div>
+</main>
+<!-- FOOTER TELEMETRY HUD -->
+<footer class="w-full bg-[#070b0e]/95 backdrop-blur-2xl z-30 px-gutter-lg py-3 border-t border-primary/20">
+<div class="w-full flex flex-col md:flex-row items-center justify-between gap-gutter-sm">
+<div class="flex items-center gap-gutter-lg flex-wrap">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">THROUGHPUT:</span>
+<span class="font-code-md text-code-md text-tertiary font-bold">1,420 tok/sec</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">INFERENCE LATENCY:</span>
+<span class="font-code-md text-code-md text-on-surface font-bold">88ms avg</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">CONSENSUS TIME:</span>
+<span class="font-code-md text-code-md text-primary font-bold">310ms</span>
+</div>
+<div class="flex items-center gap-2">
+
+
+</div>
+</div>
+<div class="flex items-center gap-gutter-md">
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-primary transition-colors" href="#">API Spec</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-primary transition-colors" href="#">Architecture</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-primary transition-colors" href="#">v2.4 Active Theory Edition</a>
+</div>
+</div>
+</footer>
+</div>
+<!-- ACTIVE THEORY INTERACTION SCRIPT -->
+<script>
+  (() => {
+    // --- STATE REPOSITORIES & SEED PROMPTS ---
+    const SEED_PROMPTS = {
+      logistics: "Deploy an autonomous robotic micro-fulfillment network across 14 dense tier-1 European metropolitan hubs with sub-18 minute delivery SLA, solving sidewalk pedestrian safety and battery swap automation.",
+      semiconductors: "Design an ultra-low-power RISC-V Neuromorphic AI Edge Vision SoC on 5nm process targeting industrial robotics with sub-1.5 Watt continuous classification and local online fine-tuning.",
+      biotech: "Establish a scalable continuous microbial fermentation bio-manufacturing foundry for animal-free precision dairy proteins with automated gene-expression sensor feedback loops."
+    };
+
+    const API_URL = 'http://localhost:8000/analyze';
+    let lastResult = null;
+
+    // DOM Elements
+    const cursorFollower = document.getElementById('cursor-follower');
+    const cursorDot = document.getElementById('cursor-dot');
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    const mainSidebar = document.getElementById('mainSidebar');
+    const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+    const missionPrompt = document.getElementById('missionPrompt');
+    const charCounter = document.getElementById('charCounter');
+    const executeBtn = document.getElementById('executeProtocolBtn');
+    const clearPromptBtn = document.getElementById('clearPromptBtn');
+    const seedChips = document.querySelectorAll('.seed-chip');
+    const telemetryTerminal = document.getElementById('telemetryTerminal');
+    const clearLogsBtn = document.getElementById('clearLogsBtn');
+    const swarmStatusText = document.getElementById('swarmStatusText');
+    const activeWorkerCount = document.getElementById('activeWorkerCount');
+    const tokensEmittedCounter = document.getElementById('tokensEmittedCounter');
+    const resultsSection = document.getElementById('stage-verdict');
+    const resetAnalysisBtn = document.getElementById('resetAnalysisBtn');
+    const errorRecoveryCard = document.getElementById('errorRecoveryCard');
+    const errorMessageText = document.getElementById('errorMessageText');
+    const verdictBadge = document.getElementById('verdictBadge');
+    const verdictIcon = document.getElementById('verdictIcon');
+    const verdictTitle = document.getElementById('verdictTitle');
+    const verdictSummaryQuote = document.getElementById('verdictSummaryQuote');
+    const dismissErrorBtn = document.getElementById('dismissErrorBtn');
+    const retryApiBtn = document.getElementById('retryApiBtn');
+    const forceMockBtn = document.getElementById('forceMockBtn');
+    const modeToggleBtn = document.getElementById('modeToggleBtn');
+    const modeText = document.getElementById('modeText');
+    const modeIndicatorDot = document.getElementById('modeIndicatorDot');
+    const exportReportBtn = document.getElementById('exportReportBtn');
+    const livePing = document.getElementById('livePing');
+
+    // Agent Node Elements
+    const nodeAgentFinance = document.getElementById('nodeAgentFinance');
+    const nodeAgentTech = document.getElementById('nodeAgentTech');
+    const nodeAgentMarket = document.getElementById('nodeAgentMarket');
+    const nodeAgentDecision = document.getElementById('nodeAgentDecision');
+
+    const agentFinStatus = document.getElementById('agentFinStatus');
+    const agentTechStatus = document.getElementById('agentTechStatus');
+    const agentMktStatus = document.getElementById('agentMktStatus');
+    const decisionAgentStatus = document.getElementById('decisionAgentStatus');
+    const decisionAgentConfidence = document.getElementById('decisionAgentConfidence');
+
+    const agentFinMs = document.getElementById('agentFinMs');
+    const agentTechMs = document.getElementById('agentTechMs');
+    const agentMktMs = document.getElementById('agentMktMs');
+
+    // Tab Buttons
+    const tabBtnFinance = document.getElementById('tabBtnFinance');
+    const tabBtnTech = document.getElementById('tabBtnTech');
+    const tabBtnMarket = document.getElementById('tabBtnMarket');
+    const tabBtnMatrix = document.getElementById('tabBtnMatrix');
+
+    const panelFinance = document.getElementById('panelFinance');
+    const panelTech = document.getElementById('panelTech');
+    const panelMarket = document.getElementById('panelMarket');
+    const panelMatrix = document.getElementById('panelMatrix');
+
+    let isMockMode = true;
+    let isExecuting = false;
+
+    // --- ACTIVE THEORY FLUID CURSOR ---
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let followerX = mouseX;
+    let followerY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursorDot) {
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      }
+    });
+
+    function renderCursor() {
+      followerX += (mouseX - followerX) * 0.18;
+      followerY += (mouseY - followerY) * 0.18;
+      if (cursorFollower) {
+        cursorFollower.style.left = `${followerX}px`;
+        cursorFollower.style.top = `${followerY}px`;
+      }
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+
+    // Magnetic hover feedback on buttons & interactive elements
+    document.querySelectorAll('button, a, .seed-chip, textarea, input, .cyber-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (cursorFollower) {
+          cursorFollower.style.width = '48px';
+          cursorFollower.style.height = '48px';
+          cursorFollower.style.borderColor = '#4cd7f6';
+          cursorFollower.style.backgroundColor = 'rgba(76, 215, 246, 0.08)';
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        if (cursorFollower) {
+          cursorFollower.style.width = '32px';
+          cursorFollower.style.height = '32px';
+          cursorFollower.style.borderColor = 'rgba(76, 215, 246, 0.6)';
+          cursorFollower.style.backgroundColor = 'transparent';
+        }
+      });
+    });
+
+    // --- 3D PERSPECTIVE TILT ACROSS ALL TILT CARDS ---
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    // --- AMBIENT PROGRESS & STAGE HIGHLIGHTS ---
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      if (scrollProgressBar) {
+        scrollProgressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+
+      const stages = ['stage-kernel', 'stage-topology', 'stage-telemetry', 'stage-verdict'];
+      stages.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 250 && rect.bottom >= 200) {
+            document.querySelectorAll('.stage-nav-item').forEach(nav => {
+              const isCurrent = nav.getAttribute('data-stage') === id.replace('stage-', '');
+              const dot = nav.querySelector('div');
+              const text = nav.querySelector('span');
+              if (isCurrent) {
+                dot.className = 'w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_#4cd7f6] transition-all';
+                text.className = 'font-telemetry-tag text-[11px] tracking-widest text-primary font-bold transition-colors';
+              } else {
+                dot.className = 'w-2.5 h-2.5 rounded-full border border-primary/50 group-hover:bg-primary transition-all';
+                text.className = 'font-telemetry-tag text-[11px] tracking-widest text-on-surface-variant group-hover:text-primary transition-colors';
+              }
+            });
+          }
+        }
+      });
+    });
+
+    // Ambient Ping Jitter
+    setInterval(() => {
+      if (livePing) {
+        const jitter = Math.floor(18 + Math.random() * 6);
+        livePing.textContent = `${jitter}ms`;
+      }
+    }, 3500);
+
+    // Mobile Sidebar Toggle
+    if (mobileSidebarToggle) {
+      mobileSidebarToggle.addEventListener('click', () => {
+        mainSidebar.classList.toggle('-translate-x-full');
+      });
+    }
+
+    // --- PROMPT TEXTAREA & SEED CHIPS ---
+    missionPrompt.addEventListener('input', () => {
+      const len = missionPrompt.value.length;
+      charCounter.textContent = `${len} / 2,400 chars`;
+    });
+
+    seedChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const seedKey = chip.getAttribute('data-seed');
+        if (SEED_PROMPTS[seedKey]) {
+          missionPrompt.value = SEED_PROMPTS[seedKey];
+          charCounter.textContent = `${missionPrompt.value.length} / 2,400 chars`;
+          missionPrompt.focus();
+          appendLog(`[SEED_LOADED] Scenario injected: '${chip.textContent.trim()}'`, 'text-primary');
+        }
+      });
+    });
+
+    clearPromptBtn.addEventListener('click', () => {
+      missionPrompt.value = '';
+      charCounter.textContent = '0 / 2,400 chars';
+    });
+
+    modeToggleBtn.addEventListener('click', () => {
+      isMockMode = !isMockMode;
+      if (isMockMode) {
+        modeText.textContent = 'AUTO-FALLBACK MOCK';
+        modeIndicatorDot.className = 'w-2 h-2 rounded-full bg-tertiary';
+      } else {
+        modeText.textContent = 'STRICT HTTP POST';
+        modeIndicatorDot.className = 'w-2 h-2 rounded-full bg-primary';
+      }
+    });
+
+    clearLogsBtn.addEventListener('click', () => {
+      telemetryTerminal.innerHTML = '<div class="text-outline-variant">[TERMINAL CLEARED] Ready for next execution stream.</div>';
+    });
+
+    function appendLog(text, colorClass = 'text-on-surface-variant') {
+      const logLine = document.createElement('div');
+      logLine.className = `${colorClass} flex items-start gap-2`;
+      const timeStr = new Date().toISOString().split('T')[1].slice(0, 11);
+      logLine.innerHTML = `<span class="text-outline font-mono text-[11px]">${timeStr}</span> <span>${text}</span>`;
+      telemetryTerminal.appendChild(logLine);
+      telemetryTerminal.scrollTop = telemetryTerminal.scrollHeight;
+    }
+
+    // --- TABS SYSTEM ---
+    const tabs = [
+      { btn: tabBtnFinance, panel: panelFinance, color: 'text-tertiary border-tertiary/40' },
+      { btn: tabBtnTech, panel: panelTech, color: 'text-primary border-primary/40' },
+      { btn: tabBtnMarket, panel: panelMarket, color: 'text-secondary border-secondary/40' },
+      { btn: tabBtnMatrix, panel: panelMatrix, color: 'text-on-surface border-white/20' }
+    ];
+
+    tabs.forEach(tab => {
+      tab.btn.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.btn.className = 'tab-pill px-gutter-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 border border-transparent';
+          t.panel.classList.add('hidden');
+        });
+        tab.btn.className = `tab-pill px-gutter-md py-2 rounded-lg bg-surface-container-high ${tab.color} border font-headline-sm text-headline-sm flex items-center gap-2 font-bold`;
+        tab.panel.classList.remove('hidden');
+      });
+    });
+
+    // --- GENERIC JSON -> HTML RENDERER (matches app's card styling) ---
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderValueHTML(value) {
+      if (value === null || value === undefined || value === '') {
+        return '<span class="opacity-40">—</span>';
+      }
+      if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+        return `<span>${escapeHtml(value)}</span>`;
+      }
+      if (Array.isArray(value)) {
+        return `<ul class="ml-4 list-disc space-y-1">${value.map(v => `<li>${renderValueHTML(v)}</li>`).join('')}</ul>`;
+      }
+      if (typeof value === 'object') {
+        return `<div class="flex flex-col gap-1.5">${Object.entries(value).map(([k, v]) => `
+          <div class="p-gutter-sm bg-surface-container-low border border-white/5 rounded-lg">
+            <span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase block mb-1">${escapeHtml(k.replace(/_/g, ' '))}</span>
+            <span class="font-body-md text-body-md text-on-surface">${renderValueHTML(v)}</span>
+          </div>`).join('')}</div>`;
+      }
+      return `<span>${escapeHtml(value)}</span>`;
+    }
+
+    function renderAgentPanel(data, emptyLabel) {
+      if (!data) {
+        return `<div class="p-panel-padding-md text-on-surface-variant font-body-md text-body-md opacity-60">${emptyLabel}</div>`;
+      }
+      return `<div class="flex flex-col gap-gutter-sm bg-surface-container-lowest/80 border border-white/5 p-panel-padding-md rounded-xl">${renderValueHTML(data)}</div>`;
+    }
+
+    // --- MULTI-AGENT SYNTHESIS EXECUTION (REAL BACKEND CALL) ---
+    async function triggerExecution() {
+      if (isExecuting) return;
+      const promptText = missionPrompt.value.trim();
+
+      if (!promptText) {
+        appendLog('[VALIDATION] Please enter a problem statement before executing.', 'text-error');
+        return;
+      }
+
+      isExecuting = true;
+      executeBtn.disabled = true;
+      executeBtn.classList.add('opacity-50', 'pointer-events-none');
+      resultsSection.classList.add('hidden');
+      resultsSection.classList.remove('flex');
+      errorRecoveryCard.classList.add('hidden');
+
+      // Update Cockpit Status
+      swarmStatusText.textContent = 'AGENTS_ENGAGED';
+      swarmStatusText.parentElement.className = 'inline-flex items-center gap-2 px-gutter-sm py-1 rounded-md bg-primary/20 border border-primary/40 text-primary font-code-md text-code-md animate-pulse';
+      activeWorkerCount.textContent = '3 NODES COMPUTING';
+
+      // Visual Topology Node Activations
+      nodeAgentFinance.classList.add('at-glow-emerald', 'border-tertiary');
+      nodeAgentTech.classList.add('at-glow-cyan', 'border-primary');
+      nodeAgentMarket.classList.add('at-glow-violet', 'border-secondary');
+      nodeAgentDecision.classList.add('border-primary', 'shadow-2xl');
+
+      agentFinStatus.textContent = 'REASONING...';
+      agentTechStatus.textContent = 'REASONING...';
+      agentMktStatus.textContent = 'REASONING...';
+      decisionAgentStatus.textContent = 'ARBITRATING...';
+      decisionAgentConfidence.textContent = '';
+
+      const startTime = Date.now();
+      let elapsedTimer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        agentFinMs.textContent = `${elapsed}ms`;
+        agentTechMs.textContent = `${elapsed}ms`;
+        agentMktMs.textContent = `${elapsed}ms`;
+      }, 100);
+
+      appendLog(`[DISPATCH] Submitting problem statement (${promptText.length} chars) to POST ${API_URL}`, 'text-primary');
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ problem: promptText })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (!data.success) {
+          throw new Error(data.error || 'Analysis failed.');
+        }
+
+        const result = data.result || {};
+        lastResult = result;
+        clearInterval(elapsedTimer);
+        const elapsedMs = Date.now() - startTime;
+        agentFinMs.textContent = `${elapsedMs}ms`;
+        agentTechMs.textContent = `${elapsedMs}ms`;
+        agentMktMs.textContent = `${elapsedMs}ms`;
+
+        const financeData = result.finance_analysis ?? result.finance_agent ?? result.finance ?? (result.agents && result.agents.finance) ?? result.financial_agent ?? null;
+        const technicalData = result.technical_analysis ?? result.technical_agent ?? result.technical ?? (result.agents && result.agents.technical) ?? null;
+        const marketData = result.market_analysis ?? result.market_agent ?? result.market ?? (result.agents && result.agents.market) ?? null;
+        const decision = result.final_decision || {};
+        const feasibility = decision.overall_feasibility || 'N/A';
+        const recommendation = decision.final_recommendation || 'No recommendation available.';
+
+        // Finalize Nodes
+        agentFinStatus.textContent = financeData ? 'CONVERGED' : 'NO DATA';
+        agentTechStatus.textContent = technicalData ? 'CONVERGED' : 'NO DATA';
+        agentMktStatus.textContent = marketData ? 'CONVERGED' : 'NO DATA';
+        decisionAgentStatus.textContent = 'VERDICT SIGNED';
+        decisionAgentConfidence.textContent = decision.confidence ? `Conf: ${decision.confidence}` : '';
+
+        nodeAgentFinance.classList.remove('at-glow-emerald');
+        nodeAgentTech.classList.remove('at-glow-cyan');
+        nodeAgentMarket.classList.remove('at-glow-violet');
+
+        swarmStatusText.textContent = 'CONSENSUS_SYNTHESIZED';
+        swarmStatusText.parentElement.className = 'inline-flex items-center gap-2 px-gutter-sm py-1 rounded-md bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-code-md text-code-md';
+        activeWorkerCount.textContent = '3 NODES IDLE';
+
+        // Populate verdict banner with REAL data
+        const feasLower = feasibility.toLowerCase();
+        let verdictColorClasses = 'bg-tertiary/20 border-tertiary/40 text-tertiary';
+        let iconName = 'verified';
+        if (feasLower.includes('not') || feasLower.includes('infeasible') || feasLower.includes('un')) {
+          verdictColorClasses = 'bg-error/20 border-error/40 text-error';
+          iconName = 'dangerous';
+        } else if (feasLower.includes('conditional')) {
+          verdictColorClasses = 'bg-secondary/20 border-secondary/40 text-secondary';
+          iconName = 'warning';
+        }
+        verdictBadge.className = `px-3 py-1 rounded-lg font-headline-sm text-headline-sm font-bold tracking-wide border ${verdictColorClasses}`;
+        verdictBadge.textContent = feasibility;
+        verdictIcon.textContent = iconName;
+        verdictTitle.textContent = 'Synthesized Recommendation';
+        verdictSummaryQuote.textContent = `"${recommendation}"`;
+
+        // Summary stat tiles: only show fields the backend actually returned
+        const extraKeys = Object.entries(decision).filter(([k]) => !['overall_feasibility', 'final_recommendation'].includes(k));
+        const statTileEls = [
+          { labelEl: null, valEl: document.getElementById('metricCapEff') },
+          { labelEl: null, valEl: document.getElementById('metricTechFeas') },
+          { labelEl: null, valEl: document.getElementById('metricMarketDef') },
+          { labelEl: null, valEl: document.getElementById('metricDivergence') }
+        ];
+        const statTileWrap = document.getElementById('summaryStatTiles');
+        if (extraKeys.length > 0 && statTileWrap) {
+          statTileWrap.classList.remove('hidden');
+          statTileEls.forEach((tile, i) => {
+            const card = tile.valEl ? tile.valEl.closest('div') : null;
+            if (extraKeys[i] && card) {
+              const [k, v] = extraKeys[i];
+              const labelSpan = card.querySelector('span');
+              if (labelSpan) labelSpan.textContent = k.replace(/_/g, ' ').toUpperCase();
+              tile.valEl.textContent = typeof v === 'object' ? JSON.stringify(v) : String(v);
+              const sub = card.querySelectorAll('span')[2];
+              if (sub) sub.textContent = '';
+              card.classList.remove('hidden');
+            } else if (card) {
+              card.classList.add('hidden');
+            }
+          });
+        } else if (statTileWrap) {
+          statTileWrap.classList.add('hidden');
+        }
+
+        // Populate drilldown panels with REAL per-agent data
+        panelFinance.innerHTML = renderAgentPanel(financeData, 'No data returned by the Finance agent.');
+        panelTech.innerHTML = renderAgentPanel(technicalData, 'No data returned by the Technical agent.');
+        panelMarket.innerHTML = renderAgentPanel(marketData, 'No data returned by the Market agent.');
+        panelMatrix.innerHTML = `<div class="bg-surface-container-lowest/80 border border-secondary/30 p-panel-padding-md rounded-xl flex flex-col gap-gutter-sm">
+          <span class="font-headline-sm text-headline-sm text-on-surface font-bold">SYNTHESIS RATIONALE</span>
+          <p class="font-body-md text-body-md text-on-surface-variant italic">"${escapeHtml(recommendation)}"</p>
+        </div>`;
+
+        appendLog(`[VERDICT] Consensus synthesized in ${elapsedMs}ms. Feasibility: ${feasibility}`, 'text-tertiary');
+
+        // Reveal Verdict Section
+        resultsSection.classList.remove('hidden');
+        resultsSection.classList.add('flex');
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } catch (err) {
+        clearInterval(elapsedTimer);
+        const msg = err && err.message ? err.message : 'Unable to connect to the AI backend. Make sure the Python API is running.';
+        appendLog(`[ERROR] ${msg}`, 'text-error');
+
+        agentFinStatus.textContent = 'IDLE';
+        agentTechStatus.textContent = 'IDLE';
+        agentMktStatus.textContent = 'IDLE';
+        decisionAgentStatus.textContent = 'STANDBY';
+        nodeAgentFinance.classList.remove('at-glow-emerald');
+        nodeAgentTech.classList.remove('at-glow-cyan');
+        nodeAgentMarket.classList.remove('at-glow-violet');
+
+        swarmStatusText.textContent = 'SWARM_ERROR';
+        swarmStatusText.parentElement.className = 'inline-flex items-center gap-2 px-gutter-sm py-1 rounded-md bg-error/20 border border-error/40 text-error font-code-md text-code-md';
+        activeWorkerCount.textContent = '3 NODES IDLE';
+
+        errorMessageText.textContent = msg;
+        errorRecoveryCard.classList.remove('hidden');
+      } finally {
+        isExecuting = false;
+        executeBtn.disabled = false;
+        executeBtn.classList.remove('opacity-50', 'pointer-events-none');
+      }
+    }
+
+    // Keyboard Shortcut ⌘ + Enter
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        triggerExecution();
+      }
+    });
+
+    executeBtn.addEventListener('click', triggerExecution);
+
+    // Reset
+    resetAnalysisBtn.addEventListener('click', () => {
+      resultsSection.classList.add('hidden');
+      resultsSection.classList.remove('flex');
+      lastResult = null;
+      swarmStatusText.textContent = 'STANDBY_READY';
+      swarmStatusText.parentElement.className = 'inline-flex items-center gap-2 px-gutter-sm py-1 rounded-md bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-code-md text-code-md';
+      agentFinStatus.textContent = 'IDLE';
+      agentTechStatus.textContent = 'IDLE';
+      agentMktStatus.textContent = 'IDLE';
+      decisionAgentStatus.textContent = 'STANDBY';
+      decisionAgentConfidence.textContent = 'Conf: --%';
+      agentFinMs.textContent = '0ms';
+      agentTechMs.textContent = '0ms';
+      agentMktMs.textContent = '0ms';
+      tokensEmittedCounter.textContent = '0 tok';
+      appendLog('[STATE RESET] Synthesis memory cleared. Swarm ready for new hypothesis.', 'text-outline');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Error Recovery Actions
+    dismissErrorBtn.addEventListener('click', () => errorRecoveryCard.classList.add('hidden'));
+    retryApiBtn.addEventListener('click', () => {
+      errorRecoveryCard.classList.add('hidden');
+      triggerExecution();
+    });
+    if (forceMockBtn) forceMockBtn.style.display = 'none';
+    if (modeToggleBtn) modeToggleBtn.style.display = 'none';
+
+    // Export JSON Verdict (REAL result data)
+    exportReportBtn.addEventListener('click', () => {
+      if (!lastResult) {
+        appendLog('[EXPORT] No analysis result available yet.', 'text-error');
+        return;
+      }
+      const payload = {
+        timestamp: new Date().toISOString(),
+        thesis: missionPrompt.value,
+        result: lastResult
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `nexus-analysis-${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      appendLog('[EXPORT] Analysis JSON downloaded.', 'text-tertiary');
+    });
+
+    // Boot Default Setup
+    charCounter.textContent = `${missionPrompt.value.length} / 2,400 chars`;
+
+    // Populate operator identity from session (set during login)
+    const opHandle = localStorage.getItem('nexus_operator_email') || sessionStorage.getItem('nexus_operator_email');
+    const headerLink = document.getElementById('operatorHandleHeaderLink');
+    if (opHandle && headerLink) headerLink.textContent = opHandle;
+
+    // Logout / revoke session
+    const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+    if (sidebarLogoutBtn) {
+      sidebarLogoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('nexus_auth');
+        localStorage.removeItem('nexus_operator_email');
+        sessionStorage.removeItem('nexus_auth');
+        sessionStorage.removeItem('nexus_operator_email');
+        window.location.href = 'login.html';
+      });
+    }
+  })();
+</script>
+
+
+</body></html>

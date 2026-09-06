@@ -1,0 +1,334 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-primary": "#00687a", "on-primary-fixed-variant": "#004e5c", "on-tertiary-fixed": "#002113", "on-error-container": "#ffdad6", "on-secondary-container": "#d6a9ff", "inverse-surface": "#e0e3e8", "on-primary-container": "#00424f", "secondary-fixed-dim": "#ddb7ff", "inverse-on-surface": "#2d3135", "surface-dim": "#101418", "error": "#ffb4ab", "surface-variant": "#31353a", "on-primary-fixed": "#001f26", "surface-bright": "#353a3e", "primary-fixed": "#acedff", "on-tertiary-fixed-variant": "#005236", "background": "#101418", "on-secondary-fixed-variant": "#6900b3", "surface-container": "#1c2024", "outline-variant": "#3d494c", "on-secondary-fixed": "#2c0051", "on-background": "#e0e3e8", "tertiary": "#4edea3", "on-secondary": "#490080", "error-container": "#93000a", "surface-container-low": "#181c20", "on-error": "#690005", "primary-container": "#06b6d4", "on-surface-variant": "#bcc9cd", "surface-container-lowest": "#0a0f13", "on-surface": "#e0e3e8", "secondary": "#ddb7ff", "tertiary-fixed": "#6ffbbe", "on-primary": "#003640", "primary": "#4cd7f6", "secondary-fixed": "#f0dbff", "on-tertiary-container": "#00452e", "secondary-container": "#6f00be", "on-tertiary": "#003824", "surface-tint": "#4cd7f6", "tertiary-fixed-dim": "#4edea3", "surface-container-highest": "#31353a", "surface": "#101418", "tertiary-container": "#1bbd85", "surface-container-high": "#262a2f", "outline": "#869397", "primary-fixed-dim": "#4cd7f6" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter-sm": "0.5rem", "gutter-md": "1rem", "panel-padding-md": "1.25rem", "gutter-lg": "1.5rem", "panel-padding-sm": "0.75rem", "panel-padding-lg": "2rem", "margin-page": "1.5rem" }, "fontFamily": { "code-lg": [ "JetBrains Mono" ], "headline-md": [ "Space Grotesk" ], "display": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Space Grotesk" ], "body-md": [ "Space Grotesk" ], "telemetry-tag": [ "JetBrains Mono" ], "body-sm": [ "Space Grotesk" ], "display-mobile": [ "Space Grotesk" ], "code-md": [ "JetBrains Mono" ], "headline-lg": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "code-lg": [ "14px", { "lineHeight": "22px", "fontWeight": "500" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "fontWeight": "400" } ], "telemetry-tag": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "fontWeight": "400" } ], "display-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "code-md": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-primary/20 selection:text-primary">
+<script>
+  // --- SHARED AUTH GUARD ---
+  (function(){
+    if (!sessionStorage.getItem('nexus_auth') && !localStorage.getItem('nexus_auth')) {
+      window.location.href = 'login.html';
+    }
+  })();
+</script>
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest/90 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 -translate-x-full lg:translate-x-0" id="mainSidebar"><div class="flex flex-col"><div class="h-16 px-gutter-md flex items-center justify-between bg-surface-container-low/40"><div class="flex items-center gap-gutter-sm"><div class="relative flex items-center justify-center"><div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div><div class="absolute w-4 h-4 rounded-full bg-primary/20 animate-ping"></div></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase">NEXUS</span><span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant"><br></span></div></div><span class="font-code-md text-code-md text-tertiary bg-surface-container-high px-gutter-sm py-0.5 rounded">PROD</span></div><div class="px-gutter-md py-gutter-md"><span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase tracking-wider block mb-gutter-sm">Operational Matrices</span><nav class="flex flex-col gap-1" data-active-classes="bg-surface-container-high text-primary font-bold"><a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="orchestrator-console" href="dashboard.html"><span class="material-symbols-outlined text-[18px]">hub</span><span class="font-body-sm text-body-sm">Swarm Topology</span></a><a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dag-inspector" href="dashboard.html#stage-topology"><span class="material-symbols-outlined text-[18px]">account_tree</span><span class="font-body-sm text-body-sm">DAG Execution</span></a><a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="cluster-metrics" href="dashboard.html#stage-kernel"><span class="material-symbols-outlined text-[18px]">dns</span><span class="font-body-sm text-body-sm">Compute Clusters</span></a><a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="vector-memory" href="dashboard.html#stage-telemetry"><span class="material-symbols-outlined text-[18px]">dataset</span><span class="font-body-sm text-body-sm">State &amp; Memory</span></a><a class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="telemetry-audit" href="dashboard.html#stage-telemetry"><span class="material-symbols-outlined text-[18px]">terminal</span><span class="font-body-sm text-body-sm">Inference Logs</span></a><a aria-current="page" class="flex items-center gap-gutter-sm px-gutter-md py-panel-padding-sm rounded-lg transition-all bg-surface-container-high text-primary font-bold" data-path="operator-profile" href="profile.html"><span class="material-symbols-outlined text-[18px]">person</span><span class="font-body-sm text-body-sm">Operator Profile</span></a></nav></div></div><div class="p-gutter-md bg-surface-container-lowest/50 flex flex-col gap-gutter-sm"><div class="bg-surface-container-low p-panel-padding-sm rounded-lg flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">ACTIVE ENGINE</span><span class="font-telemetry-tag text-telemetry-tag text-tertiary">ONLINE</span></div></div></div></aside>
+<div class="fixed inset-0 bg-black/60 z-40 hidden" id="sidebarBackdrop"></div>
+<div class="pl-0 lg:pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-0 lg:left-64 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-xl z-30 px-gutter-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-gutter-lg"><button class="lg:hidden p-1.5 rounded text-on-surface-variant hover:text-on-surface" id="mobileSidebarToggle"><span class="material-symbols-outlined">menu</span></button><div class="hidden xl:flex items-center gap-gutter-md"><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span></div><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-code-md text-code-md text-on-surface-variant">AGENTS:</span><span class="font-code-md text-code-md text-on-surface">3+1 ACTIVE</span></div><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-code-md text-code-md text-on-surface-variant">SYS:</span><span class="font-code-md text-code-md text-tertiary">READY</span></div></div><div class="flex items-center gap-gutter-sm bg-surface-container-high/60 px-gutter-sm py-1 rounded"></div></div><div class="flex items-center gap-gutter-md"><a class="flex items-center gap-gutter-sm" href="dashboard.html" title="Return to Swarm Topology"><span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">hub</span></a><div class="flex items-center bg-surface-container p-0.5 rounded-lg"></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 pt-16 w-full bg-background"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden px-gutter-lg py-panel-padding-lg flex flex-col gap-gutter-lg">
+<!-- Ambient Radial Glows (Z-0 containment) -->
+<div class="absolute -top-32 right-10 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-96 -left-20 w-80 h-80 bg-secondary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 right-1/4 w-96 h-96 bg-tertiary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- 1. TOP PROFILE HERO BANNER & STATUS MATRIX -->
+<div class="relative bg-surface-container-low/80 backdrop-blur-2xl rounded-xl p-gutter-lg shadow-xl shadow-surface-container-lowest/50 flex flex-col gap-gutter-lg overflow-hidden">
+<!-- Simulated Laser Scan Line -->
+<div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-70 animate-[pulse_4s_ease-in-out_infinite]"></div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-gutter-md">
+<!-- Left: Operator Core Identity & Hex Ring Avatar -->
+<div class="flex items-center gap-gutter-md">
+<div class="relative flex items-center justify-center">
+<!-- Animated Ambient Ring -->
+<div class="absolute w-20 h-20 rounded-full bg-primary/20 blur-md animate-pulse"></div>
+<!-- Avatar Frame -->
+<div class="relative w-16 h-16 rounded-xl bg-surface-container-highest flex items-center justify-center shadow-lg shadow-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover mix-blend-screen opacity-90" data-alt="Futuristic cybernetic avatar portrait of a lead autonomous systems engineer, cinematic neon cyan rim light, holographic UI reflections on obsidian visor, high-tech command deck in background with telemetry readouts in emerald and cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdjSi_f5GV_oRFGvUrjiPK_Dk1TrZObubDO9NYLy7ZanioTAW1T6TESlNELcFx-BMeANt408564CEHC1y1GOODjcORye0mfGteDmDv7uIjP3x47tQN9rrfV3wOQpVsJQUfmQdjQUQqJLlgtPd4FK0yY10Zlcy2RBODYpjK7_aXG9LwX8jmuVOa1cdx_camAql69Qf9KT-jVh6jcFW2ezn7g8SQxb-0cAQprgdeFnvTTfWAoLUeCm3I">
+<!-- Hologram Grid Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-primary/10"></div>
+</div>
+<!-- Online Pill Marker -->
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center ring-4 ring-surface-container-low shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-gutter-sm flex-wrap">
+<span class="font-headline-md text-headline-md text-on-surface tracking-tight" id="operatorEmailDisplay">sarthak.adak@nexus.ai</span>
+<div class="flex items-center gap-1.5 px-gutter-sm py-0.5 rounded bg-tertiary-container/20 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-telemetry-tag text-telemetry-tag uppercase font-bold tracking-wider">ONLINE // NEXUS ARMED</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter-sm flex-wrap text-on-surface-variant pt-1">
+<span class="font-code-md text-code-md text-primary font-bold">ARCHITECT-01 // ROOT ENCLAVE</span>
+<span class="font-telemetry-tag text-telemetry-tag opacity-40">|</span>
+
+</div>
+<div class="flex items-center gap-gutter-sm text-on-surface-variant mt-2 flex-wrap">
+<span class="font-telemetry-tag text-telemetry-tag bg-surface-container-high px-2 py-0.5 rounded text-secondary uppercase font-semibold">LEVEL 5 ZERO-TRUST</span>
+
+<span class="font-telemetry-tag text-telemetry-tag bg-surface-container-high px-2 py-0.5 rounded text-on-surface-variant">CLUSTER: 3+1 NEXUS</span>
+<!-- Cryptographic Snippet with Click-to-Copy Feedback -->
+<button class="flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest/80 hover:bg-primary/20 hover:text-primary transition-all text-on-surface-variant font-code-md text-code-md group" id="copy-key-btn" title="Copy Enclave Cryptographic Hash">
+<span class="material-symbols-outlined text-[14px]">key</span>
+<span class="font-telemetry-tag text-telemetry-tag" id="key-hash-text">0x7F2A...8A9B_ED25519</span>
+<span class="text-tertiary font-telemetry-tag text-telemetry-tag hidden" id="copy-status-badge">COPIED</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right: Governance Quick Action Bar -->
+<div class="flex items-center flex-wrap gap-gutter-sm mt-2 lg:mt-0">
+
+
+
+<button class="flex items-center gap-1.5 px-panel-padding-sm py-panel-padding-sm rounded bg-error-container/30 text-error hover:bg-error-container/50 transition-all" id="logoutBtn" title="Revoke All Session Tokens">
+<span class="material-symbols-outlined text-[18px]">power_settings_new</span>
+</button>
+</div>
+</div>
+<!-- Key Governance Telemetry Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-md pt-gutter-md">
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">Consensuses Executed</span>
+<span class="material-symbols-outlined text-[16px] text-primary">analytics</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">14,290</span>
+<span class="font-code-md text-code-md text-tertiary">+12.4%</span>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">Validated Multi-Agent Runs</span>
+</div>
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">Supermajority Adjudication</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-tertiary font-bold">99.4%</span>
+<span class="font-code-md text-code-md text-on-surface-variant">4-of-4 quorum</span>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">Threshold Confidence Level</span>
+</div>
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">Average DAG Latency</span>
+<span class="material-symbols-outlined text-[16px] text-primary">timer</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">88ms</span>
+<span class="font-code-md text-code-md text-tertiary">-14ms Δ</span>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">End-to-End Orchestration</span>
+</div>
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">Synthesized Tokens</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">memory</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold">42.8M</span>
+<span class="font-code-md text-code-md text-on-surface-variant">Groq + DGX</span>
+</div>
+<span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant">LPU &amp; Tensor Cores Combined</span>
+</div>
+</div>
+</div>
+<!-- 2. GRID BAY: ENCLAVE CREDENTIALS & AGENT INFERENCE LIMITS -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg">
+<!-- Security Enclave & Hardware Credentials (5 Cols) -->
+
+<!-- Agent Inference Allocations & Quota Sliders (7 Cols) -->
+<div class="xl:col-span-7 flex flex-col gap-gutter-md">
+<div class="bg-surface-container-low rounded-xl p-panel-padding-lg flex flex-col gap-gutter-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-gutter-sm">
+<span class="material-symbols-outlined text-[20px] text-tertiary">hub</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase">Agent Inference Quota &amp; Cluster Slicing</span>
+</div>
+<span class="font-code-md text-code-md text-on-surface-variant">DYNAMIC LOAD-BALANCE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-md">
+<!-- Agent 1: Groq LPU -->
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-gutter-sm hover:shadow-lg transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Groq LPU Node</span>
+<span class="font-telemetry-tag text-telemetry-tag text-primary">GPT-OSS Unit Economics Specialist</span>
+</div>
+<span class="font-code-md text-code-md text-tertiary font-bold">74.0%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 74%"></div>
+</div>
+<div class="flex items-center justify-between font-telemetry-tag text-telemetry-tag text-on-surface-variant">
+<span class="">1,480 / 2,000 tok/sec</span>
+<span class="text-tertiary">Ultra-Low Latency</span>
+</div>
+</div>
+<!-- Agent 2: NVIDIA DGX H100 -->
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-gutter-sm hover:shadow-lg transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">NVIDIA DGX H100 Slice</span>
+<span class="font-telemetry-tag text-telemetry-tag text-secondary">Nemotron-3.5 Feasibility Agent</span>
+</div>
+<span class="font-code-md text-code-md text-secondary font-bold">94.2%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 94.2%"></div>
+</div>
+<div class="flex items-center justify-between font-telemetry-tag text-telemetry-tag text-on-surface-variant">
+<span class="">94.2% Compute Saturation</span>
+<span class="text-secondary">FP8 Tensor Optimized</span>
+</div>
+</div>
+<!-- Agent 3: Groq Qwen -->
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-gutter-sm hover:shadow-lg transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Groq Qwen Pod</span>
+<span class="font-telemetry-tag text-telemetry-tag text-primary">Moats &amp; Market TAM Verifier</span>
+</div>
+<span class="font-code-md text-code-md text-tertiary font-bold">61.0%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full transition-all duration-500" style="width: 61%"></div>
+</div>
+<div class="flex items-center justify-between font-telemetry-tag text-telemetry-tag text-on-surface-variant">
+<span class="">305 / 500 req/min</span>
+<span class="text-tertiary">Optimal Queue</span>
+</div>
+</div>
+<!-- Agent 4: Master Synthesizer (Gemini 1.5 Pro) -->
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-gutter-sm hover:shadow-lg transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Gemini 1.5 Pro</span>
+<span class="font-telemetry-tag text-telemetry-tag text-primary-fixed-dim">Master Synthesizer / Arbitrator</span>
+</div>
+<span class="font-code-md text-code-md text-primary font-bold">UNLIMITED</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full w-full"></div>
+</div>
+<div class="flex items-center justify-between font-telemetry-tag text-telemetry-tag text-on-surface-variant">
+<span class="">Supermajority Consensus Enforcer</span>
+<span class="text-primary font-semibold">PRIORITY: P0</span>
+</div>
+</div>
+</div>
+<!-- Real-Time Tok/Sec Telemetry Stream Bar Chart -->
+<div class="bg-surface-container p-panel-padding-md rounded-lg flex flex-col gap-gutter-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Cluster Inference Load Dynamics (Last 60s)</span>
+<span class="font-telemetry-tag text-telemetry-tag text-tertiary">PEAK: 1,890 tok/s</span>
+</div>
+<!-- Monospace Sparkline Bar Array -->
+<div class="h-16 flex items-end gap-1.5 w-full pt-2">
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[30%] rounded-t transition-all cursor-pointer" title="420 tok/s"></div>
+<div class="flex-1 bg-primary/30 hover:bg-primary h-[45%] rounded-t transition-all cursor-pointer" title="610 tok/s"></div>
+<div class="flex-1 bg-primary/40 hover:bg-primary h-[60%] rounded-t transition-all cursor-pointer" title="890 tok/s"></div>
+<div class="flex-1 bg-primary/60 hover:bg-primary h-[85%] rounded-t transition-all cursor-pointer" title="1,310 tok/s"></div>
+<div class="flex-1 bg-tertiary/60 hover:bg-tertiary h-[90%] rounded-t transition-all cursor-pointer" title="1,420 tok/s"></div>
+<div class="flex-1 bg-primary/80 hover:bg-primary h-[70%] rounded-t transition-all cursor-pointer" title="1,050 tok/s"></div>
+<div class="flex-1 bg-primary/50 hover:bg-primary h-[55%] rounded-t transition-all cursor-pointer" title="780 tok/s"></div>
+<div class="flex-1 bg-primary/70 hover:bg-primary h-[80%] rounded-t transition-all cursor-pointer" title="1,240 tok/s"></div>
+<div class="flex-1 bg-tertiary h-[95%] rounded-t shadow-sm shadow-tertiary/40 cursor-pointer" title="1,580 tok/s"></div>
+<div class="flex-1 bg-primary h-[100%] rounded-t shadow-sm shadow-primary/50 cursor-pointer" title="1,890 tok/s"></div>
+<div class="flex-1 bg-primary/80 hover:bg-primary h-[75%] rounded-t transition-all cursor-pointer" title="1,150 tok/s"></div>
+<div class="flex-1 bg-primary/60 hover:bg-primary h-[65%] rounded-t transition-all cursor-pointer" title="940 tok/s"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. SYNTHESIS AUDIT TRAIL & SYSTEM ALERT PREFERENCES (SPLIT BAY) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg">
+<!-- Interactive Synthesis Audit Feed (8 Cols) -->
+<div class="xl:col-span-8 flex flex-col gap-gutter-md">
+
+</div>
+<!-- Cybernetic Governance & Alert Preferences (4 Cols) -->
+<div class="xl:col-span-4 flex flex-col gap-gutter-md">
+
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Mobile sidebar off-canvas toggle
+  const mainSidebar = document.getElementById('mainSidebar');
+  const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  function toggleSidebar() {
+    mainSidebar.classList.toggle('-translate-x-full');
+    sidebarBackdrop.classList.toggle('hidden');
+  }
+  if (mobileSidebarToggle) mobileSidebarToggle.addEventListener('click', toggleSidebar);
+  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', toggleSidebar);
+
+  // Populate operator identity from session (set during login)
+  const opHandle = localStorage.getItem('nexus_operator_email') || sessionStorage.getItem('nexus_operator_email');
+  const emailDisplay = document.getElementById('operatorEmailDisplay');
+  if (opHandle && emailDisplay) emailDisplay.textContent = opHandle;
+
+  // Logout / revoke session
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('nexus_auth');
+      localStorage.removeItem('nexus_operator_email');
+      sessionStorage.removeItem('nexus_auth');
+      sessionStorage.removeItem('nexus_operator_email');
+      window.location.href = 'login.html';
+    });
+  }
+
+  // Copy public key snippet feedback
+  const copyBtn = document.getElementById('copy-key-btn');
+  const hashText = document.getElementById('key-hash-text');
+  const copyStatus = document.getElementById('copy-status-badge');
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('0x7F2A48C9011B8A9B_ED25519_SYNTHESIS_ROOT').catch(() => {});
+      copyStatus.classList.remove('hidden');
+      hashText.classList.add('hidden');
+      setTimeout(() => {
+        copyStatus.classList.add('hidden');
+        hashText.classList.remove('hidden');
+      }, 1500);
+    });
+  }
+
+  // Security Posture Slider interactive readout
+  const rigorSlider = document.getElementById('rigor-slider');
+  const rigorLabel = document.getElementById('rigor-value-label');
+
+  if (rigorSlider && rigorLabel) {
+    const labels = {
+      '1': 'Standard (Single Quorum)',
+      '2': 'Restricted (Dual Signature)',
+      '3': 'Strict (Tier-5 Multi-Party)'
+    };
+    rigorSlider.addEventListener('input', (e) => {
+      rigorLabel.textContent = labels[e.target.value] || 'Custom';
+    });
+  }
+
+  // Audit Tab Filtering
+  function filterAudit(category) {
+    const tabs = ['all', 'consensus', 'security', 'override'];
+    tabs.forEach(tab => {
+      const el = document.getElementById(`tab-${tab}`);
+      if (el) {
+        if (tab === category) {
+          el.className = 'font-telemetry-tag text-telemetry-tag px-3 py-1 rounded bg-primary text-on-primary font-bold transition-all';
+        } else {
+          el.className = 'font-telemetry-tag text-telemetry-tag px-3 py-1 rounded text-on-surface-variant hover:text-on-surface transition-all';
+        }
+      }
+    });
+
+    const rows = document.querySelectorAll('.audit-row');
+    rows.forEach(row => {
+      if (category === 'all' || row.classList.contains(category)) {
+        row.style.display = 'flex';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest/90 backdrop-blur-md z-30 px-gutter-lg py-panel-padding-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full flex flex-col md:flex-row items-center justify-between gap-gutter-sm"><div class="flex items-center gap-gutter-lg flex-wrap"><div class="flex items-center gap-2"><span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">THROUGHPUT:</span><span class="font-code-md text-code-md text-tertiary">1,420 tok/sec</span></div><div class="flex items-center gap-2"></div><div class="flex items-center gap-2"><span class="font-telemetry-tag text-telemetry-tag text-on-surface-variant uppercase">CONSENSUS TIME:</span><span class="font-code-md text-code-md text-primary">310ms</span></div><div class="flex items-center gap-2"></div></div><div class="flex items-center gap-gutter-md"></div></div></footer></div>
+
+
+
+</body></html>
