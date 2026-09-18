@@ -3,6 +3,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>MAS Synthesis // Operator Registration</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script async="" defer="" src="https://accounts.google.com/gsi/client"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -234,6 +235,12 @@
 <span class="mono text-[11px] text-slate-500">Already have credentials?</span>
 <a class="mono text-[11px] text-cyan-400/90 hover:text-cyan-300 transition-colors ml-1" href="login.html">Log in →</a>
 </div>
+<!-- Google Sign-In -->
+<div class="mt-6 pt-6 border-t border-cyan-500/10">
+<div class="mono text-[10px] text-center text-slate-500 uppercase tracking-wider mb-3">Or Continue with Google</div>
+<div data-callback="handleGoogleCredential" data-client_id="591855603162-98h9g3d28r4ccrrg2g0h7eapclrni16b.apps.googleusercontent.com" id="g_id_onload"></div>
+<div class="g_id_signin flex justify-center" data-size="large" data-theme="filled_black" data-type="standard" data-width="320"></div>
+</div>
 <!-- Feedback / Status Toast in card -->
 <div class="hidden mt-4 p-3 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 mono text-xs text-center flex items-center justify-center gap-2" id="authStatusToast">
 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
@@ -274,6 +281,30 @@
       toast.classList.remove('hidden', 'bg-emerald-950/70', 'border-emerald-500/40', 'text-emerald-300');
       toast.classList.add('bg-red-950/70', 'border-red-500/40', 'text-red-300');
       toast.querySelector('span:last-child').textContent = message;
+    }
+
+    async function handleGoogleCredential(response) {
+      try {
+        const res = await fetch(`${API_BASE}/google-login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ credential: response.credential }),
+        });
+        const data = await res.json();
+
+        if (!data.success) {
+          showError(data.error || 'Google sign-in failed.');
+          return;
+        }
+
+        localStorage.setItem('nexus_auth', 'true');
+        localStorage.setItem('nexus_token', data.token);
+        localStorage.setItem('nexus_operator_email', data.user.email);
+        localStorage.setItem('nexus_operator_name', data.user.name || '');
+        window.location.href = 'dashboard.html';
+      } catch (err) {
+        showError('Cannot reach backend for Google sign-in.');
+      }
     }
 
     async function handleSignup(e) {
