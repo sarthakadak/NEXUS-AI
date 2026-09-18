@@ -99,6 +99,41 @@ def verify_user(email: str, password: str) -> dict:
     }
 
 
+def get_or_create_google_user(email: str, name: str) -> dict:
+    conn = get_db()
+    user = conn.execute(
+        "SELECT * FROM users WHERE email = ?", (email,)
+    ).fetchone()
+
+    if not user:
+        # Google-authenticated users still get a row in the users table,
+        # with a random unusable password (they'll never log in with a password).
+        random_password = secrets.token_hex(32)
+        pw_hash, salt = hash_password(random_password)
+        cursor = conn.execute(
+            "INSERT INTO users (email, name, password_hash, salt) VALUES (?, ?, ?, ?)",
+            (email, name, pw_hash, salt),
+        )
+        conn.commit()
+        user_id = cursor.lastrowid
+    else:
+        user_id = user["id"]
+
+    token = secrets.token_hex(32)
+    conn.execute(
+        "INSERT INTO sessions (token, user_id) VALUES (?, ?)",
+        (token, user_id),
+    )
+    conn.commit()
+    conn.close()
+
+    return {
+        "success": True,
+        "token": token,
+        "user": {"id": user_id, "email": email, "name": name},
+    }
+
+
 def get_user_from_token(token: str):
     conn = get_db()
     row = conn.execute(

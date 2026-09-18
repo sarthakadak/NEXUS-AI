@@ -1,6 +1,8 @@
 from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 
 from orchestrator import run_all_agents
 import auth
@@ -27,6 +29,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+GOOGLE_CLIENT_ID = "591855603162-98h9g3d28r4ccrrg2g0h7eapclrni16b.apps.googleusercontent.com"
+
 
 class ProblemRequest(BaseModel):
     problem: str
@@ -41,6 +45,10 @@ class SignupRequest(BaseModel):
 class LoginRequest(BaseModel):
     email: str
     password: str
+
+
+class GoogleLoginRequest(BaseModel):
+    credential: str
 
 
 @app.get("/")
@@ -68,6 +76,25 @@ def login(request: LoginRequest):
         return {"success": False, "error": "Email and password are required."}
 
     result = auth.verify_user(request.email.strip().lower(), request.password)
+    return result
+
+
+@app.post("/google-login")
+def google_login(request: GoogleLoginRequest):
+    try:
+        idinfo = id_token.verify_oauth2_token(
+            request.credential, google_requests.Request(), GOOGLE_CLIENT_ID
+        )
+    except ValueError:
+        return {"success": False, "error": "Invalid Google token."}
+
+    email = idinfo.get("email", "").lower()
+    name = idinfo.get("name", "")
+
+    if not email:
+        return {"success": False, "error": "Google account has no email."}
+
+    result = auth.get_or_create_google_user(email, name)
     return result
 
 
