@@ -6,8 +6,10 @@ from google.auth.transport import requests as google_requests
 
 from orchestrator import run_all_agents
 import auth
+import history
 
 auth.init_db()
+history.init_history_table()
 
 app = FastAPI(
     title="Multi-Agent AI Decision System",
@@ -111,8 +113,15 @@ def me(authorization: str = Header(default="")):
     return {"success": True, "user": user}
 
 
+def _get_user(authorization: str):
+    token = authorization.replace("Bearer ", "").strip()
+    if not token:
+        return None
+    return auth.get_user_from_token(token)
+
+
 @app.post("/analyze")
-def analyze_problem(request: ProblemRequest):
+def analyze_problem(request: ProblemRequest, authorization: str = Header(default="")):
 
     if not request.problem.strip():
         return {
@@ -127,8 +136,44 @@ def analyze_problem(request: ProblemRequest):
 
     result = run_all_agents(request.problem)
 
+    # Save to the database only if the user is logged in
+    analysis_id = None
+    user = _get_user(authorization)
+    if user:
+        analysis_id = history.save_analysis(user["id"], request.problem, result)
+
     return {
         "success": True,
         "problem": request.problem,
+        "analysis_id": analysis_id,
         "result": result
     }
+
+
+@app.get("/history")
+def get_history(authorization: str = Header(default="")):
+    user = _get_user(authorization)
+    if not user:
+        return {"success": False, "error": "Please log in."}
+    return {"success": True, "history": history.list_analyses(user["id"])}
+
+
+@app.get("/history/{analysis_id}")
+def get_one_history(analysis_id: str, authorization: str = Header(default="")):
+    user = _get_user(authorization)
+    if not user:
+        return {"success": False, "error": "Please log in."}
+    item = history.get_analysis(user["id"], analysis_id)
+    if not item:
+        return {"success": False, "error": "Analysis not found."}
+    return {"success": True, "analysis": item}
+
+
+@app.delete("/history/{analysis_id}")
+def delete_history(analysis_id: str, authorization: str = Header(default="")):
+    user = _get_user(authorization)
+    if not user:
+        return {"success": False, "error": "Please log in."}
+    if not history.delete_analysis(user["id"], analysis_id):
+        return {"success": False, "error": "Analysis not found."}
+    return {"success": True}

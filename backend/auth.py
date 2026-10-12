@@ -1,45 +1,23 @@
 """
 Simple auth module for NEXUS.
-Uses SQLite for storage, bcrypt-style hashing via hashlib+salt (no extra
-dependency beyond passlib), and random tokens for sessions.
+Stores users and login sessions in MongoDB.
 """
 
-import sqlite3
 import hashlib
 import secrets
-import os
+from datetime import datetime, timezone
+from bson import ObjectId
+from bson.errors import InvalidId
+from pymongo.errors import DuplicateKeyError
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "nexus.db")
-
-
-def get_db():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+from database import get_db
 
 
 def init_db():
-    conn = get_db()
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email TEXT UNIQUE NOT NULL,
-            name TEXT,
-            password_hash TEXT NOT NULL,
-            salt TEXT NOT NULL,
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS sessions (
-            token TEXT PRIMARY KEY,
-            user_id INTEGER NOT NULL,
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    """)
-    conn.commit()
-    conn.close()
+    """Create indexes (safe to run every time the server starts)."""
+    db = get_db()
+    db.users.create_index("email", unique=True)
+    db.sessions.create_index("token", unique=True)
 
 
 def hash_password(password: str, salt: str = None) -> tuple[str, str]:
@@ -49,84 +27,70 @@ def hash_password(password: str, salt: str = None) -> tuple[str, str]:
     return pw_hash, salt
 
 
-def create_user(email: str, password: str, name: str = "") -> dict:
-    conn = get_db()
-    existing = conn.execute(
-        "SELECT id FROM users WHERE email = ?", (email,)
-    ).fetchone()
-    if existing:
-        conn.close()
-        return {"success": False, "error": "An account with this email already exists."}
+def _now():
+    return datetime.now(timezone.utc).isoformat()
 
-    pw_hash, salt = hash_password(password)
-    cursor = conn.execute(
-        "INSERT INTO users (email, name, password_hash, salt) VALUES (?, ?, ?, ?)",
-        (email, name, pw_hash, salt),
+
+def _new_session(user_id: str) -> str:
+    token = secrets.token_hex(32)
+    get_db().sessions.insert_one(
+        {"token": token, "user_id": user_id, "created_at": _now()}
     )
-    conn.commit()
-    user_id = cursor.lastrowid
-    conn.close()
-    return {"success": True, "user_id": user_id}
+    return token
+
+
+def create_user(email: str, password: str, name: str = "") -> dict:
+    pw_hash, salt = hash_password(password)
+    try:
+        result = get_db().users.insert_one({
+            "email": email,
+            "name": name,
+            "password_hash": pw_hash,
+            "salt": salt,
+            "created_at": _now(),
+        })
+    except DuplicateKeyError:
+        return {"success": False, "error": "An account with this email already exists."}
+    return {"success": True, "user_id": str(result.inserted_id)}
 
 
 def verify_user(email: str, password: str) -> dict:
-    conn = get_db()
-    user = conn.execute(
-        "SELECT * FROM users WHERE email = ?", (email,)
-    ).fetchone()
-
+    user = get_db().users.find_one({"email": email})
     if not user:
-        conn.close()
         return {"success": False, "error": "Invalid email or password."}
 
     pw_hash, _ = hash_password(password, user["salt"])
     if pw_hash != user["password_hash"]:
-        conn.close()
         return {"success": False, "error": "Invalid email or password."}
 
-    token = secrets.token_hex(32)
-    conn.execute(
-        "INSERT INTO sessions (token, user_id) VALUES (?, ?)",
-        (token, user["id"]),
-    )
-    conn.commit()
-    conn.close()
-
+    user_id = str(user["_id"])
+    token = _new_session(user_id)
     return {
         "success": True,
         "token": token,
-        "user": {"id": user["id"], "email": user["email"], "name": user["name"]},
+        "user": {"id": user_id, "email": user["email"], "name": user.get("name", "")},
     }
 
 
 def get_or_create_google_user(email: str, name: str) -> dict:
-    conn = get_db()
-    user = conn.execute(
-        "SELECT * FROM users WHERE email = ?", (email,)
-    ).fetchone()
+    db = get_db()
+    user = db.users.find_one({"email": email})
 
     if not user:
-        # Google-authenticated users still get a row in the users table,
-        # with a random unusable password (they'll never log in with a password).
-        random_password = secrets.token_hex(32)
-        pw_hash, salt = hash_password(random_password)
-        cursor = conn.execute(
-            "INSERT INTO users (email, name, password_hash, salt) VALUES (?, ?, ?, ?)",
-            (email, name, pw_hash, salt),
-        )
-        conn.commit()
-        user_id = cursor.lastrowid
+        # Google users get a random unusable password
+        pw_hash, salt = hash_password(secrets.token_hex(32))
+        result = db.users.insert_one({
+            "email": email,
+            "name": name,
+            "password_hash": pw_hash,
+            "salt": salt,
+            "created_at": _now(),
+        })
+        user_id = str(result.inserted_id)
     else:
-        user_id = user["id"]
+        user_id = str(user["_id"])
 
-    token = secrets.token_hex(32)
-    conn.execute(
-        "INSERT INTO sessions (token, user_id) VALUES (?, ?)",
-        (token, user_id),
-    )
-    conn.commit()
-    conn.close()
-
+    token = _new_session(user_id)
     return {
         "success": True,
         "token": token,
@@ -135,14 +99,14 @@ def get_or_create_google_user(email: str, name: str) -> dict:
 
 
 def get_user_from_token(token: str):
-    conn = get_db()
-    row = conn.execute(
-        """
-        SELECT users.id, users.email, users.name
-        FROM sessions JOIN users ON sessions.user_id = users.id
-        WHERE sessions.token = ?
-        """,
-        (token,),
-    ).fetchone()
-    conn.close()
-    return dict(row) if row else None
+    db = get_db()
+    session = db.sessions.find_one({"token": token})
+    if not session:
+        return None
+    try:
+        user = db.users.find_one({"_id": ObjectId(session["user_id"])})
+    except InvalidId:
+        return None
+    if not user:
+        return None
+    return {"id": str(user["_id"]), "email": user["email"], "name": user.get("name", "")}

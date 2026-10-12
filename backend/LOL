@@ -1,0 +1,403 @@
+/**
+ * ==============================================================================
+ * CYBER_VAULT MAINFRAME ENGINE // script.js
+ * CORE PROTOCOL: CLIENT-SIDE EXECUTION RUNTIME
+ * ==============================================================================
+ * 
+ * [SECURITY NOTICE: CODE RUNTIME TELEMETRY]
+ * Welcome to Sector 03 reverse-engineering.
+ * You are viewing the client-side JavaScript execution code.
+ * 
+ * FLAG 3 ENCRYPTION ARTIFACT (JAVA CREATOR):
+ * The authorization flag has been encoded in Base64:
+ * const _0xVaultSector3Data = "Q1RGeyBqYW1lc19nb3NsaW5nfQ==";
+ * 
+ * Decoded payload: CTF{ james_gosling}
+ * 
+ * Or call CyberVault.decryptSector3() in the browser console!
+ * ==============================================================================
+ */
+
+// Encrypted Flag 3 payload (CTF{ james_gosling})
+const _0xVaultSector3Data = "Q1RGeyBqYW1lc19nb3NsaW5nfQ==";
+
+// Expected Target Flags (For Reference & Verification)
+const VAULT_FLAGS = {
+  1: "CTF{ tim_berners_lee}",
+  2: "CTF{ hakon_wium_lie}",
+  3: "CTF{ james_gosling}"
+};
+
+// Application State
+const state = {
+  startTime: Date.now(),
+  audioEnabled: true,
+  matrixEnabled: true
+};
+
+/* ==============================================================================
+   WEB AUDIO SYNTHESIZER
+   ============================================================================== */
+class CyberAudio {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true;
+  }
+
+  init() {
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        this.ctx = new AudioCtx();
+      }
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  playClick() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(300, this.ctx.currentTime + 0.05);
+
+      gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.05);
+    } catch (e) {}
+  }
+}
+
+const audio = new CyberAudio();
+
+/* ==============================================================================
+   MATRIX DIGITAL RAIN CANVAS
+   ============================================================================== */
+class MatrixRain {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.characters = '01ABCDEFΩΨλπ{}<>/*[]=+_~^0123456789アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロ';
+    this.fontSize = 14;
+    this.columns = 0;
+    this.drops = [];
+    this.animId = null;
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+    this.start();
+  }
+
+  resize() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.columns = Math.floor(this.canvas.width / this.fontSize);
+    this.drops = [];
+    for (let i = 0; i < this.columns; i++) {
+      this.drops[i] = Math.floor(Math.random() * -50);
+    }
+  }
+
+  draw() {
+    this.ctx.fillStyle = 'rgba(7, 9, 14, 0.06)';
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.ctx.fillStyle = '#00f2fe';
+    this.ctx.font = `${this.fontSize}px monospace`;
+
+    for (let i = 0; i < this.drops.length; i++) {
+      const char = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+      const x = i * this.fontSize;
+      const y = this.drops[i] * this.fontSize;
+
+      if (Math.random() > 0.85) {
+        this.ctx.fillStyle = '#ffffff';
+      } else if (Math.random() > 0.5) {
+        this.ctx.fillStyle = '#00f2fe';
+      } else {
+        this.ctx.fillStyle = '#39ff14';
+      }
+
+      this.ctx.fillText(char, x, y);
+
+      if (y > this.canvas.height && Math.random() > 0.975) {
+        this.drops[i] = 0;
+      }
+      this.drops[i]++;
+    }
+  }
+
+  start() {
+    const loop = () => {
+      if (state.matrixEnabled) {
+        this.draw();
+      }
+      this.animId = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  toggle(enabled) {
+    if (enabled) {
+      this.canvas.classList.remove('hidden');
+    } else {
+      this.canvas.classList.add('hidden');
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+  }
+}
+
+let matrix;
+
+/* ==============================================================================
+   TERMINAL EMULATOR LOGIC
+   ============================================================================== */
+function terminalPrint(text, className = '') {
+  const history = document.getElementById('terminal-history');
+  if (!history) return;
+
+  const line = document.createElement('div');
+  line.className = `terminal-line ${className}`;
+  line.innerHTML = text;
+  history.appendChild(line);
+
+  const screen = document.getElementById('terminal-screen');
+  if (screen) {
+    screen.scrollTop = screen.scrollHeight;
+  }
+}
+
+function processTerminalCommand(rawCmd) {
+  const cmd = rawCmd.trim();
+  if (!cmd) return;
+
+  terminalPrint(`<span class="terminal-prompt">vault:~$</span> ${escapeHTML(cmd)}`);
+  audio.playClick();
+
+  const parts = cmd.split(' ');
+  const root = parts[0].toLowerCase();
+  const arg = parts.slice(1).join(' ');
+
+  switch (root) {
+    case 'help':
+      terminalPrint('AVAILABLE COMMANDS:', 'text-cyan');
+      terminalPrint('  <span class="cmd-highlight">help</span>               - Display this help manual');
+      terminalPrint('  <span class="cmd-highlight">status</span>             - Check status of the 3 challenge sectors');
+      terminalPrint('  <span class="cmd-highlight">hint [1|2|3]</span>       - Retrieve tactical intel on a sector');
+      terminalPrint('  <span class="cmd-highlight">matrix</span>             - Toggle digital rain backdrop');
+      terminalPrint('  <span class="cmd-highlight">audio</span>              - Toggle audio sound effects');
+      terminalPrint('  <span class="cmd-highlight">clear</span> or <span class="cmd-highlight">cls</span>       - Clear the terminal console buffer');
+      terminalPrint('  <span class="cmd-highlight">whoami</span>             - Print current agent clearance');
+      terminalPrint('  <span class="cmd-highlight">cat mission.txt</span>    - Read mission briefing');
+      break;
+
+    case 'status':
+      terminalPrint(`RECONNAISSANCE REPORT:`, 'text-cyan');
+      terminalPrint(`  Sector 1 [HTML]: Inspect DOM tree / hidden elements`);
+      terminalPrint(`  Sector 2 [CSS]:  Inspect style.css / pseudo-elements`);
+      terminalPrint(`  Sector 3 [JAVA]: Inspect Console & decryptSector3()`);
+      break;
+
+    case 'hint':
+      const secNum = parseInt(arg, 10);
+      if (secNum === 1) {
+        terminalPrint('CTF{ tim}', 'cmd-highlight');
+      } else if (secNum === 2) {
+        terminalPrint('CTF{ hak}', 'cmd-highlight');
+      } else if (secNum === 3) {
+        terminalPrint('CTF{ jam}', 'cmd-highlight');
+      } else {
+        terminalPrint('Usage: hint 1, hint 2, or hint 3', 'text-muted');
+      }
+      break;
+
+    case 'matrix':
+      state.matrixEnabled = !state.matrixEnabled;
+      if (matrix) matrix.toggle(state.matrixEnabled);
+      const btnMatrix = document.getElementById('btn-matrix');
+      if (btnMatrix) btnMatrix.classList.toggle('active', state.matrixEnabled);
+      terminalPrint(`Matrix effect: ${state.matrixEnabled ? 'ENABLED' : 'DISABLED'}`, 'text-cyan');
+      break;
+
+    case 'audio':
+      state.audioEnabled = !state.audioEnabled;
+      audio.enabled = state.audioEnabled;
+      const btnAudio = document.getElementById('btn-audio');
+      if (btnAudio) btnAudio.innerHTML = state.audioEnabled ? '<span>🔊</span>' : '<span>🔇</span>';
+      terminalPrint(`Audio FX: ${state.audioEnabled ? 'ENABLED' : 'MUTED'}`, 'text-cyan');
+      break;
+
+    case 'clear':
+    case 'cls':
+      const history = document.getElementById('terminal-history');
+      if (history) history.innerHTML = '';
+      break;
+
+    case 'whoami':
+      terminalPrint('agent: operator_0x8f [CLEARANCE: RECON OPERATOR]', 'text-green');
+      terminalPrint('origin: DevTools Terminal Subsystem v3.4.19');
+      break;
+
+    case 'cat':
+      if (arg.toLowerCase() === 'mission.txt') {
+        terminalPrint('--- CLASSIFIED MEMO ---', 'text-cyan');
+        terminalPrint('Objective: Capture all 3 flags hidden across the 3 fundamental web layers.');
+        terminalPrint('Sector 1: HTML pioneer (DOM inspection)');
+        terminalPrint('Sector 2: CSS pioneer (style.css inspection)');
+        terminalPrint('Sector 3: Java pioneer (runtime console inspection)');
+        terminalPrint('Format: CTF{ ... }');
+      } else {
+        terminalPrint(`cat: ${escapeHTML(arg)}: Permission denied or file not found.`, 'text-red');
+      }
+      break;
+
+    default:
+      terminalPrint(`Command not recognized: '${escapeHTML(root)}'. Type 'help' for available commands.`, 'text-red');
+      break;
+  }
+}
+
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag)
+  );
+}
+
+/* ==============================================================================
+   SESSION STOPWATCH TIMER
+   ============================================================================== */
+function initStopwatch() {
+  const timerEl = document.getElementById('session-timer');
+  if (!timerEl) return;
+
+  setInterval(() => {
+    const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
+    const hrs = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+    const secs = String(elapsed % 60).padStart(2, '0');
+    timerEl.textContent = `${hrs}:${mins}:${secs}`;
+  }, 1000);
+}
+
+/* ==============================================================================
+   PUBLIC CONSOLE API (FLAG 3 DEVTOOLS REVERSE ENGINEERING)
+   ============================================================================== */
+window.CyberVault = {
+  help: function() {
+    console.log("%c[CYBER_VAULT CONSOLE COMMANDS]", "color:#00f2fe; font-weight:bold; font-size:14px;");
+    console.log("  • CyberVault.decryptSector3()  -> Decrypts the Sector 03 Java Flag");
+    console.log("  • CyberVault.getHint(sector)   -> Request tactical telemetry hint (1, 2, or 3)");
+    return "Awaiting your command.";
+  },
+
+  getHint: function(sector) {
+    if (sector === 1) return "CTF{ tim}";
+    if (sector === 2) return "CTF{ hak}";
+    if (sector === 3) return "CTF{ jam}";
+    return "Specify sector 1, 2, or 3.";
+  },
+
+  /**
+   * Decrypts the concealed flag for Sector 03
+   */
+  decryptSector3: function() {
+    try {
+      const decoded = atob(_0xVaultSector3Data);
+      console.log(
+        "%c[ACCESS GRANTED] %cSector 03 Decryption Sequence Success!\n%cFlag: " + decoded,
+        "color:#39ff14; font-weight:bold; font-size:16px;",
+        "color:#00f2fe; font-size:14px;",
+        "color:#ff7849; font-weight:bold; font-size:16px; background:#111; padding:4px 8px; border:1px solid #ff7849; border-radius:4px;"
+      );
+      terminalPrint(`[CONSOLE EVENT]: Sector 3 Flag Decrypted via DevTools Hook!`, 'text-purple');
+      return decoded;
+    } catch (e) {
+      return "Decryption error.";
+    }
+  }
+};
+
+/* ==============================================================================
+   INITIALIZATION & EVENT BINDINGS
+   ============================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Matrix Rain
+  matrix = new MatrixRain('matrix-canvas');
+
+  // Initialize Stopwatch
+  initStopwatch();
+
+  // Initialize Audio toggle
+  const btnAudio = document.getElementById('btn-audio');
+  if (btnAudio) {
+    btnAudio.addEventListener('click', () => {
+      state.audioEnabled = !state.audioEnabled;
+      audio.enabled = state.audioEnabled;
+      btnAudio.innerHTML = state.audioEnabled ? '<span>🔊</span>' : '<span>🔇</span>';
+      audio.playClick();
+    });
+  }
+
+  // Initialize Matrix toggle
+  const btnMatrix = document.getElementById('btn-matrix');
+  if (btnMatrix) {
+    btnMatrix.addEventListener('click', () => {
+      state.matrixEnabled = !state.matrixEnabled;
+      if (matrix) matrix.toggle(state.matrixEnabled);
+      btnMatrix.classList.toggle('active', state.matrixEnabled);
+      audio.playClick();
+    });
+  }
+
+  // Terminal Form
+  const termForm = document.getElementById('terminal-form');
+  const termInput = document.getElementById('terminal-input');
+  if (termForm && termInput) {
+    termForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = termInput.value;
+      termInput.value = '';
+      processTerminalCommand(val);
+    });
+  }
+
+  // Print Epic DevTools Console Welcome Banner
+  console.log(
+    `%c
+ ██████╗██╗   ██╗██████╗ ███████╗██████╗ 
+██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗
+██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝
+██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗
+╚██████╗   ██║   ██████╔╝███████╗██║  ██║
+ ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝
+ %c[⚡] DEVTOOLS ACCESS DETECTED: Welcome Operator.
+ %c[ℹ] SECTOR 03 MISSION TELEMETRY:
+ Run %cCyberVault.help()%c for interactive console commands.
+ Or execute %cCyberVault.decryptSector3()%c to extract the Flag directly!
+    `,
+    "color: #00f2fe; font-family: monospace; font-size: 11px; font-weight: bold;",
+    "color: #39ff14; font-size: 13px; font-weight: bold;",
+    "color: #cad5e2; font-size: 12px;",
+    "color: #ff007f; font-weight: bold; font-family: monospace;",
+    "color: #cad5e2;",
+    "color: #ffaa00; font-weight: bold; font-family: monospace;",
+    "color: #cad5e2;"
+  );
+});
